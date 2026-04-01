@@ -1,8 +1,9 @@
-package org.panaderia.model;
+package org.panaderia.Servicios;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+//Algoritmo SHA-256 para guardar las contraseñas de forma más segura
 public class Encriptador {
     public static String sha256(String mensaje) {
     try {
