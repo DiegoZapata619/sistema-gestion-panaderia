@@ -1,4 +1,4 @@
 package org.panaderia.controllers;
 
-public class EmployeeController {
+public class EmployeeController extends MenuController{
 }

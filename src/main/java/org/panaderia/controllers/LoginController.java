@@ -9,14 +9,17 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.panaderia.Servicios.Autenticador;
-import org.panaderia.Servicios.Encriptador;
 import org.panaderia.model.Rol;
 import org.panaderia.model.Usuario;
 
 import java.io.IOException;
 
-
-public class LoginController {
+    /*
+    Credenciales para acceder al sistema, están en formato usuario : contraseña
+        admin : testing1
+        user : testing2
+    */
+public class LoginController extends MenuController{
     @FXML
     private TextField TxtUsuario;
     @FXML
@@ -41,26 +44,18 @@ public class LoginController {
             }
             //Dependiendo del rol se carga una vista distinta
             if (usuario.getRol()== Rol.ADMINISTRADOR){
-                CargarVista("/views/adminView.fxml");
+                openNewStage(ADMIN_VIEW,"Menú Principal");
+                closeCurrentStage(TxtUsuario);
+
             } else if (usuario.getRol()==Rol.EMPLEADO) {
-                CargarVista("/views/employeeView.fxml");
+                openNewStage(EMPLOYEE_VIEW,"Menú Principal");
+                closeCurrentStage(TxtUsuario);
             }
 
         } catch (IOException e){
             lblMensaje.setText("Error al ler usuario");
             e.printStackTrace();
 
-        }
-    }
-    public void CargarVista (String ruta){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
-            Parent root = loader.load();
-            Stage stage = (Stage) TxtUsuario.getScene().getWindow();
-            stage.setScene(new Scene(root));
-            stage.show();
-        } catch (IOException e){
-            e.printStackTrace();
         }
     }
 }
