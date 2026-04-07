@@ -1,19 +1,24 @@
 package org.panaderia.model;
 
 public class Producto {
-    private double precio;
+    private String id;
     private String nombre;
     private String categoria;
+    private double precio;
     private int stock;
-    private String ID;
+    private int stockMinimo;
+    private String descripcion;
 
     //Constructor
-    public Producto (double precio, String nombre,String categoria, int stock, String ID){
-        this.precio=precio;
+    public Producto (String id, String nombre,String categoria,
+                     double precio, int stock, int stockMinimo, String descripcion){
+        this.id =id;
         this.nombre=nombre;
         this.categoria=categoria;
+        this.precio=precio;
         this.stock=stock;
-        this.ID=ID;
+        this.stockMinimo=stockMinimo;
+        this.descripcion=descripcion;
     }
 
     //Getters y Setters para cada atributo
@@ -49,13 +54,30 @@ public class Producto {
         this.stock = stock;
     }
 
-    public String getID() {
-        return ID;
+    public int getStockMinimo() {
+        return stockMinimo;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setStockMinimo(int stockMinimo) {
+        this.stockMinimo = stockMinimo;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    //Metodo que determinad si hay stock del producto. Si es mayor a 0, quiere decir que sigue disponible
     public boolean productoDisponible (){
         return stock>0;
     }

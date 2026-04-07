@@ -53,15 +53,42 @@
           </Tab>
           <Tab text="Inventario">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="106.0" fitWidth="125.0" layoutX="45.0" layoutY="50.0">
+                           <image>
+                              <Image url="@../images/2478542.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#0d0d0d" layoutX="170.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTIÓN DE INVENTARIO" textAlignment="CENTER" wrappingWidth="308.98443603515625">
+                           <font>
+                              <Font name="Segoe UI Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="121.0" layoutY="300.0" mnemonicParsing="false" onAction="#abrirGestorInventario" style="-fx-alignment: CENTER; -fx-background-color: #5ED4F2; -fx-text-fill: white; -fx-border-radius: 1;" text="Acceder a Gestor de Inventario">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Text fill="#dc3b3b" layoutX="186.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="20.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="226.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click para acceder ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="160.0" layoutY="237.0" mnemonicParsing="false" onAction="#abrirGestorInventario" style="-fx-alignment: CENTER; -fx-background-color: #5ED4F2; -fx-text-fill: white; -fx-border-radius: 1;" text="Acceder a Promociones">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Promociones">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="Gestión de Clientes">
+            <Tab text="Gestion de Clientes">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                </content>

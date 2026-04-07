@@ -38,22 +38,23 @@ public class LoginController extends MenuController{
 
         try {
             Usuario usuario= autenticador.Autenticar(nombre,password);
+            Stage currentStage= (Stage) TxtUsuario.getScene().getWindow();
             if (usuario==null){
                 lblMensaje.setText("Usuario/Contraseña incorrectos");
                 return;
             }
             //Dependiendo del rol se carga una vista distinta
             if (usuario.getRol()== Rol.ADMINISTRADOR){
-                openNewStage(ADMIN_VIEW,"Menú Principal");
+                openNewStage(ADMIN_VIEW,titulosFxml.get(ADMIN_VIEW),currentStage,LOGIN_VIEW);
                 closeCurrentStage(TxtUsuario);
 
             } else if (usuario.getRol()==Rol.EMPLEADO) {
-                openNewStage(EMPLOYEE_VIEW,"Menú Principal");
+                openNewStage(EMPLOYEE_VIEW,titulosFxml.get(EMPLOYEE_VIEW),currentStage,LOGIN_VIEW);
                 closeCurrentStage(TxtUsuario);
             }
 
         } catch (IOException e){
-            lblMensaje.setText("Error al ler usuario");
+            lblMensaje.setText("Error al leer usuario");
             e.printStackTrace();
 
         }
