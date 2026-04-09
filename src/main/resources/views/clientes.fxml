@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.panaderia.controllers.ClienteController">
+
+    <children>
+
+        <TableView fx:id="tablaClientes" layoutX="20" layoutY="20" prefWidth="500" prefHeight="200">
+            <columns>
+                <TableColumn fx:id="colNombre" text="Nombre" prefWidth="120"/>
+                <TableColumn fx:id="colTelefono" text="Teléfono" prefWidth="120"/>
+                <TableColumn fx:id="colPuntos" text="Puntos" prefWidth="80"/>
+                <TableColumn fx:id="colVisitas" text="Visitas" prefWidth="80"/>
+                <TableColumn fx:id="colCorreo" text="Correo" prefWidth="150"/>
+                <TableColumn fx:id="colPreferencias" text="Preferencias" prefWidth="150"/>
+            </columns>
+        </TableView>
+
+        <TextField fx:id="txtId" layoutX="20" layoutY="240" promptText="ID"/>
+        <TextField fx:id="txtNombre" layoutX="20" layoutY="270" promptText="Nombre"/>
+        <TextField fx:id="txtTelefono" layoutX="20" layoutY="300" promptText="Teléfono"/>
+        <TextField fx:id="txtCorreo" layoutX="20" layoutY="330" promptText="Correo"/>
+        <TextField fx:id="txtPreferencias" layoutX="20" layoutY="360" promptText="Preferencias"/>
+
+        <Button text="Agregar" layoutX="250" layoutY="270" onAction="#agregarCliente"/>
+        <Button text="Eliminar" layoutX="250" layoutY="310" onAction="#eliminarCliente"/>
+
+    </children>
+</AnchorPane>
