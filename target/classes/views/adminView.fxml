@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panaderia.controllers.AdminController">
+   <children>
+      <TabPane layoutY="2.0" prefHeight="480.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab styleClass="Buttoin" text="Inicio">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="543.0">
+                     <children>
+                        <Button layoutX="249.0" layoutY="285.0" mnemonicParsing="false" onAction="#abrirRepositorio" style="-fx-alignment: CENTER; -fx-background-color: #5ED4F2;                                 -fx-text-fill: white; -fx-border-radius: 1;" styleClass="Button" text="Ayuda">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Text fx:id="NodeText" layoutX="115.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Para información acerca del uso de la aplicación, haga click en &quot;Ayuda&quot;" textAlignment="JUSTIFY" wrappingWidth="369.502685546875">
+                           <font>
+                              <Font name="Segoe UI" size="22.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="130.0" fitWidth="127.0" layoutX="453.0" layoutY="40.0">
+                           <image>
+                              <Image url="@../images/5222047.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#0d0d0d" layoutX="146.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SISTEMA DE GESTIÓN DE PANADERIA" textAlignment="CENTER" wrappingWidth="308.98443603515625">
+                           <font>
+                              <Font name="Segoe UI Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="113.0" fitWidth="115.0" layoutX="29.0" layoutY="48.0">
+                           <image>
+                              <Image url="@../images/992710.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="botonSalir" layoutX="213.0" layoutY="351.0" mnemonicParsing="false" onAction="#cerrarSesion" style="-fx-alignment: CENTER; -fx-background-color: #5ED4F2; -fx-text-fill:                                  white; -fx-border-radius: 1;" styleClass="Button" text="Cerrar Sesión">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Inventario">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="106.0" fitWidth="125.0" layoutX="45.0" layoutY="50.0">
+                           <image>
+                              <Image url="@../images/2478542.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#0d0d0d" layoutX="170.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTIÓN DE INVENTARIO" textAlignment="CENTER" wrappingWidth="308.98443603515625">
+                           <font>
+                              <Font name="Segoe UI Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="121.0" layoutY="300.0" mnemonicParsing="false" onAction="#abrirGestorInventario" style="-fx-alignment: CENTER; -fx-background-color: #5ED4F2; -fx-text-fill: white; -fx-border-radius: 1;" text="Acceder a Gestor de Inventario">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Text fill="#dc3b3b" layoutX="186.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="20.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="226.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click para acceder ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="160.0" layoutY="237.0" mnemonicParsing="false" onAction="#abrirGestorInventario" style="-fx-alignment: CENTER; -fx-background-color: #5ED4F2; -fx-text-fill: white; -fx-border-radius: 1;" text="Acceder a Promociones">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Gestion de Clientes">
+                <content>
+                    <fx:include source="clientes.fxml"/>
+                </content>
+            </Tab>
+            <Tab text="Reportes de Ventas">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab text="Historial de Ventas">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="89.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab text="Usuarios">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Text layoutX="89.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
