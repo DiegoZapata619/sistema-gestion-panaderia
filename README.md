@@ -1,5 +1,21 @@
 # Diseño de software
 
+## Integrantes
+
+Diego Armin Zapata Góngora: Diagrama de clases
+
+Andrés Antochiw Flores: Diagrama de secuencia
+
+Edgar Emanuel Cetz Abarca: Requerimientos y Readme
+
+Jose manuel gomez chan: Requerimientos
+
+Poot Moo Irving Eduardo: Diagrama de actividad
+
+## Objetivo 
+
+Implementar una aplicación tipo POS (point of sale) que cumpla con los requerimientos identificados en el planteamiento del problema, aplicando patrones de diseño y principios SOLID que permitan la escalibilidad del proyecto y futuras implementaciones para satisfacer necesidades emergentes
+
 ## Gestión de panaderia
 
 El presente proyecto consiste en el desarrollo de un Sistema de Gestión de Panadería, diseñado para apoyar en la administración y control de las operaciones diarias de una panadería. El objetivo principal es crear una aplicación de software versátil, intuitiva y eficiente que permita optimizar procesos, reducir errores y mejorar la organización del negocio.
@@ -286,3 +302,21 @@ RNF-3.2.7.3: El sistema debe manejar adecuadamente caracteres especiales y acent
 
 ### Empleado
 ![This is an alt text.](/src/main/resources/images/Empleados.jpeg "This is a sample image.")
+
+## Diagramas
+
+### Actividad
+
+#### Login
+
+![This is an alt text.](/src/main/resources/images/DiagramaLoginAct.jpeg "This is a sample image.")
+
+#### Venta
+
+![This is an alt text.](/src/main/resources/images/venta.jpeg "This is a sample image.")
+
+### Secuence 
+
+![This is an alt text.](/src/main/resources/images/secuence1.jpeg "This is a sample image.")
+
+![This is an alt text.](/src/main/resources/images/secuence2.jpeg "This is a sample image.")
