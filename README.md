@@ -2,15 +2,11 @@
 
 ## Integrantes
 
-Diego Armin Zapata Góngora: Diagrama de clases
-
-Andrés Antochiw Flores: Diagrama de secuencia
-
-Edgar Emanuel Cetz Abarca: Requerimientos y Readme
-
-Jose manuel gomez chan: Requerimientos
-
-Poot Moo Irving Eduardo: Diagrama de actividad
+- Diego Armin Zapata Góngora
+- Andrés Antochiw Flores
+- Edgar Emanuel Cetz Abarca
+- José Manuel Gómez Chan
+- Irving Eduardo Poot Moo
 
 ## Objetivo 
 
