@@ -305,6 +305,13 @@ RNF-3.2.7.3: El sistema debe manejar adecuadamente caracteres especiales y acent
 
 ## Diagramas
 
+### Clase
+
+![This is an alt text.](/src/main/resources/images/ClassDiagram1.jpeg "This is a sample image.")
+
+![This is an alt text.](/src/main/resources/images/ClassDiagram2.jpeg "This is a sample image.")
+
+
 ### Actividad
 
 #### Login
