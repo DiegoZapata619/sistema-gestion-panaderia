@@ -1,12 +1,13 @@
-package org.panaderia.model;
+package org.panaderia.DAO;
 
-import org.panaderia.Servicios.LectorArchivos;
+
+import org.panaderia.model.Producto;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductDAO implements LectorArchivos {
+public class ProductDAO implements CRUD<Producto, String> {
     @Override
     public List<Producto> leer(String ruta) throws IOException {
         ArrayList<Producto> productos = new ArrayList<>();
@@ -38,7 +39,7 @@ public class ProductDAO implements LectorArchivos {
         }
         return productos;
     }
-    public void guardarProductos(String ruta, List<Producto> productos) throws IOException {
+    public void guardar(String ruta, List<Producto> productos) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
         bw.write("id,nombre,categoria,precio,stock,stockMinimo,descripcion");
         bw.newLine();
@@ -57,7 +58,7 @@ public class ProductDAO implements LectorArchivos {
         bw.close();
     }
 
-    public void agregarProducto (String ruta, Producto nuevo) throws IOException {
+    public void agregar(String ruta, Producto nuevo) throws IOException {
         List<Producto> productos = leer(ruta);
         for (Producto p:productos){
             if(p.getId().equals(nuevo.getId())){
@@ -66,10 +67,10 @@ public class ProductDAO implements LectorArchivos {
 
         }
         productos.add(nuevo);
-        guardarProductos(ruta,productos);
+        guardar(ruta,productos);
     }
 
-    public boolean eliminarProducto (String ruta, String eliminadoId) throws IOException{
+    public boolean eliminar(String ruta, String eliminadoId) throws IOException{
         List<Producto> productos= leer(ruta);
         //Expresion lambda. Más sencillo que desarrollar el código completo
         //removeIf busca en una coleccion y cuando encuentra un producto con la condicion cuyo
@@ -77,12 +78,12 @@ public class ProductDAO implements LectorArchivos {
         //si no se encuentra el producto, retorna false
         boolean eliminado= productos.removeIf(p -> p.getId().equals(eliminadoId));
         if (eliminado){
-            guardarProductos(ruta,productos);
+            guardar(ruta,productos);
         }
         return eliminado;
 
     }
-    public boolean actualizarProducto (String ruta, Producto actualizado) throws IOException {
+    public boolean actualizar(String ruta, Producto actualizado) throws IOException {
         List<Producto> productos= leer(ruta);
         boolean encontrado=false;
         for (int i = 0; i < productos.size(); i++) {
@@ -93,7 +94,7 @@ public class ProductDAO implements LectorArchivos {
             }
         }
         if (encontrado){
-            guardarProductos(ruta,productos);
+            guardar(ruta,productos);
         }
         return encontrado;
     }

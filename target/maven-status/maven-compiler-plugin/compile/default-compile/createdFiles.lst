@@ -1,0 +1,4 @@
+org\panaderia\DAO\UsuarioDAO.class
+org\panaderia\DAO\CRUD.class
+org\panaderia\DAO\ProductDAO.class
+org\panaderia\DAO\ClienteDAO.class

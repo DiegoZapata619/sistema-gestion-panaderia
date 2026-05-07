@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import org.panaderia.model.Cliente;
-import org.panaderia.model.ClienteDAO;
+import org.panaderia.DAO.ClienteDAO;
 
 import java.io.IOException;
 
@@ -63,7 +63,7 @@ public class ClienteController {
         );
 
         try {
-            dao.agregarCliente(RUTA, nuevo);
+            dao.agregar(RUTA, nuevo);
             cargarTabla();
             limpiarCampos();
 
@@ -87,7 +87,7 @@ public class ClienteController {
         }
 
         try {
-            dao.eliminarCliente(RUTA, seleccionado.getId());
+            dao.eliminar(RUTA, seleccionado.getId());
             cargarTabla();
 
         } catch (IOException e) {

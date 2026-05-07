@@ -7,7 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.panaderia.model.ProductDAO;
+import org.panaderia.DAO.ProductDAO;
 import org.panaderia.model.Producto;
 
 import java.io.IOException;
@@ -87,7 +87,7 @@ public class InventoryController extends MenuController {
                         Integer.parseInt(txtStockMinimo.getText()),
                         txtDescripcion.getText());
 
-                productDAO.agregarProducto(RUTA,nuevo);
+                productDAO.agregar(RUTA,nuevo);
                 cargarTabla();
                 limpiarCampos();
                setAlert(Alert.AlertType.INFORMATION, "Producto agregado correctamente");
@@ -120,7 +120,7 @@ public class InventoryController extends MenuController {
         }
 
         try {
-            productDAO.eliminarProducto(RUTA, seleccionado.getId());
+            productDAO.eliminar(RUTA, seleccionado.getId());
             cargarTabla();
 
         } catch (Exception e) {
@@ -141,7 +141,7 @@ public class InventoryController extends MenuController {
                     txtDescripcion.getText()
             );
 
-            productDAO.actualizarProducto(RUTA, actualizado);
+            productDAO.actualizar(RUTA, actualizado);
             cargarTabla();
 
         } catch (Exception e) {
