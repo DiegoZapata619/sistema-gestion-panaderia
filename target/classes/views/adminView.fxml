@@ -3,6 +3,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -55,12 +58,12 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="106.0" fitWidth="125.0" layoutX="45.0" layoutY="50.0">
+                        <ImageView fitHeight="106.0" fitWidth="123.0" layoutX="431.0" layoutY="51.0">
                            <image>
                               <Image url="@../images/2478542.png" />
                            </image>
                         </ImageView>
-                        <Text fill="#0d0d0d" layoutX="170.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTIÓN DE INVENTARIO" textAlignment="CENTER" wrappingWidth="308.98443603515625">
+                        <Text fill="#0d0d0d" layoutX="146.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTIÓN DE INVENTARIO" textAlignment="CENTER" wrappingWidth="308.98443603515625">
                            <font>
                               <Font name="Segoe UI Bold" size="36.0" />
                            </font>
@@ -80,17 +83,22 @@
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Button layoutX="160.0" layoutY="237.0" mnemonicParsing="false" onAction="#abrirGestorInventario" style="-fx-alignment: CENTER; -fx-background-color: #5ED4F2; -fx-text-fill: white; -fx-border-radius: 1;" text="Acceder a Promociones">
+                        <Button layoutX="160.0" layoutY="237.0" mnemonicParsing="false" onAction="#abrirGestorPromociones" style="-fx-alignment: CENTER; -fx-background-color: #5ED4F2; -fx-text-fill: white; -fx-border-radius: 1;" text="Acceder a Promociones">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Button>
+                        <ImageView fitHeight="125.0" fitWidth="134.0" layoutX="26.0" layoutY="41.0">
+                           <image>
+                              <Image url="@../images/4293088.png" />
+                           </image>
+                        </ImageView>
                      </children></AnchorPane>
             </content>
           </Tab>
             <Tab text="Gestion de Clientes">
                 <content>
-                    <fx:include source="clientes.fxml"/>
+                    <fx:include source="clientes.fxml" />
                 </content>
             </Tab>
             <Tab text="Reportes de Ventas">
@@ -112,6 +120,24 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <Text layoutX="89.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text fill="#0d0d0d" layoutX="72.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTIÓN DE USUARIOS" textAlignment="CENTER" wrappingWidth="455.3843994140625">
+                           <font>
+                              <Font name="Segoe UI Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <TableView layoutX="111.0" layoutY="200.0" prefHeight="208.0" prefWidth="377.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="Nombre" />
+                            <TableColumn prefWidth="75.0" text="Contraseña" />
+                              <TableColumn prefWidth="75.0" text="Rol" />
+                          </columns>
+                        </TableView>
+                        <TextField layoutX="172.0" layoutY="72.0" />
+                        <Text layoutX="11.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click para acceder ">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Text>
                      </children>
                   </AnchorPane>
                </content>

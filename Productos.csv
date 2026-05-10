@@ -1,4 +1,4 @@
-id,nombre,categoria,precio,stock,stockMinimo,descripcion
+id;nombre;categoria;precio;stock;stockMinimo;descripcion
 P001;Pan blanco;Panaderia;10.5;40;50;Pan clásico
 P002;Concha;Pan Dulce;8.0;20;15;Concha de vainilla
 P003;Panque;Pan Dulce papu;30.0;40;30;Panque con nuez,pasas y miel

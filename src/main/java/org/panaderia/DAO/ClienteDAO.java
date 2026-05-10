@@ -1,5 +1,6 @@
 package org.panaderia.DAO;
 
+import org.panaderia.Servicios.Encriptador;
 import org.panaderia.model.Cliente;
 import org.panaderia.model.Producto;
 
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteDAO implements CRUD<Cliente, String> {
+
+    private static final String ENCABEZADO = "id;nombre;telefono;correo;preferencias;puntos;visitas";
 
     @Override
     public List<Cliente> leer(String ruta) throws IOException {
@@ -52,7 +55,7 @@ public class ClienteDAO implements CRUD<Cliente, String> {
     @Override
     public void guardar(String ruta, List<Cliente> clientes) throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(ruta))) {
-            bw.write("id;nombre;telefono;correo;preferencias;puntos;visitas");
+            bw.write(ENCABEZADO);
             bw.newLine();
 
             for (Cliente c: clientes) {

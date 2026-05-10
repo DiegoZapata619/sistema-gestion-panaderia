@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO implements CRUD<Producto, String> {
+
+    private static final String ENCABEZADO = "id,nombre,categoria,precio,stock,stockMinimo,descripcion";
+
     @Override
     public List<Producto> leer(String ruta) throws IOException {
         ArrayList<Producto> productos = new ArrayList<>();
@@ -41,7 +44,7 @@ public class ProductDAO implements CRUD<Producto, String> {
     }
     public void guardar(String ruta, List<Producto> productos) throws IOException {
         BufferedWriter bw = new BufferedWriter(new FileWriter(ruta));
-        bw.write("id,nombre,categoria,precio,stock,stockMinimo,descripcion");
+        bw.write(ENCABEZADO);
         bw.newLine();
         for (Producto p : productos) {
             bw.write(

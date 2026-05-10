@@ -17,6 +17,7 @@ public class MenuController {
     public static final String ADMIN_VIEW = "/views/adminView.fxml";
     public static final String EMPLOYEE_VIEW = "/views/employeeView.fxml";
     public static final String INVENTORY_VIEW = "/views/inventoryView.fxml";
+    public static final String PROMOTIONS_VIEW = "/views/promocionesView.fxml";
     static Alert defaultAlert;
     static ButtonType acceptButton = new ButtonType("Aceptar");
     public static HashMap<String, String> titulosFxml = new HashMap<>();
@@ -27,6 +28,7 @@ public class MenuController {
         titulosFxml.put(ADMIN_VIEW, "Vista de Administrador");
         titulosFxml.put(EMPLOYEE_VIEW, "Vista de Empleado");
         titulosFxml.put(INVENTORY_VIEW, "Inventario");
+        titulosFxml.put(PROMOTIONS_VIEW, "Promociones");
     }
 
     //Funcion para poder cerrar la ventana actual

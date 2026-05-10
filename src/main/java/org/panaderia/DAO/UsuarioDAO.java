@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDAO implements CRUD<Usuario, String> {
+
+    private static final String ENCABEZADO = "nombre;hashPassword;rol";
+
     @Override
     public List<Usuario> leer(String ruta) throws IOException {
         ArrayList<Usuario> usuarios = new ArrayList<>();
@@ -40,7 +43,7 @@ public class UsuarioDAO implements CRUD<Usuario, String> {
     @Override
     public void guardar(String ruta, List<Usuario> usuarios) throws IOException {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(ruta))) {
-            bw.write("nombre;hashPassword;rol");
+            bw.write(ENCABEZADO);
             bw.newLine();
 
             for (Usuario u : usuarios) {
