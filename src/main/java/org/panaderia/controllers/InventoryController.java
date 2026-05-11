@@ -109,22 +109,27 @@ public class InventoryController extends MenuController {
             setAlert(Alert.AlertType.WARNING,"No se ha seleccionado un producto");
             return;
         }
-        if (celdasVacias(
-                txtId, txtNombre, txtCategoria,
-                txtPrecio, txtStock, txtStockMinimo, txtDescripcion)) {
-            setAlert(Alert.AlertType.WARNING, "Alguno de los campos está vacío");
-            return;
-        }
+
         if (Integer.parseInt(txtStock.getText())<=Integer.parseInt(txtStockMinimo.getText())) {
             setAlert(Alert.AlertType.ERROR, "El stock mínimo debe ser menor al stock");
         }
 
         try {
-            productDAO.eliminar(RUTA, seleccionado.getId());
-            cargarTabla();
+
+            boolean eliminado= productDAO.eliminar(RUTA,seleccionado.getId());
+            if (eliminado){
+                cargarTabla();
+                limpiarCeldas();
+                setAlert(Alert.AlertType.INFORMATION, "Producto eliminado correctamente");
+
+            }
+            else {
+                setAlert(Alert.AlertType.WARNING, "No se encontró el producto");
+            }
+
 
         } catch (Exception e) {
-            System.out.println("Error al eliminar");
+            setAlert(Alert.AlertType.ERROR, "Error al eliminar");
 
         }
     }
@@ -145,10 +150,10 @@ public class InventoryController extends MenuController {
             cargarTabla();
 
         } catch (Exception e) {
-            System.out.println("Error al actualizar");
-
+            setAlert(Alert.AlertType.ERROR, "Error al actualizar");
         }
     }
+
     public void seleccionarFila(){
         Producto p= tablaProductos.getSelectionModel().getSelectedItem();
         if (p!=null){

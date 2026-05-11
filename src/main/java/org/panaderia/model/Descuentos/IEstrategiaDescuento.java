@@ -13,5 +13,4 @@ public interface IEstrategiaDescuento {
     TipoDescuento getTipo();
     String getParametro1();
     String getParametro2();
-
 }

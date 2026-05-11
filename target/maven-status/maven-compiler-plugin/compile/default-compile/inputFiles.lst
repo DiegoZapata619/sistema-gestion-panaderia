@@ -5,7 +5,6 @@ C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderi
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\EmployeeController.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Cliente.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Descuentos\IEstrategiaDescuento.java
-C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\Servicios\Validador.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\Servicios\Autenticador.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Empleado.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\ClienteController.java
@@ -30,6 +29,7 @@ C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderi
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Venta.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Descuentos\DescuentoProducto.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\AdminController.java
+C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\PromocionController.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\Servicios\ClienteServicio.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Promocion.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\MenuController.java

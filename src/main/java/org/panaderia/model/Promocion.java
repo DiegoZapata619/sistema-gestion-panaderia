@@ -54,5 +54,22 @@ public class Promocion {
                 estrategia.getParametro2();
     }
 
+    /// Getters para que la tabla de promociones pueda cargar datos del archivo .csv correspondiente
+    public String getEstadoTexto() {
+        return activo ? "Activo" : "Inactivo";
+    }
+
+    public String getTipoTexto() {
+        return estrategia.getTipo().name();
+    }
+
+    public String getParametro1() {
+        return estrategia.getParametro1();
+    }
+
+    public String getParametro2() {
+        return estrategia.getParametro2();
+    }
+
 
 }

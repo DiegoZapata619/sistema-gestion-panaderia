@@ -10,6 +10,7 @@ org\panaderia\DAO\UsuarioDAO.class
 org\panaderia\model\Descuentos\DescuentoProducto.class
 org\panaderia\model\Descuentos\IEstrategiaDescuento.class
 org\panaderia\model\Descuentos\DescuentoCategoria.class
+org\panaderia\controllers\PromocionController.class
 org\panaderia\model\Descuentos\DescuentoMonto.class
 org\panaderia\model\Promocion.class
 org\panaderia\DAO\ProductDAO.class

@@ -1,5 +1,5 @@
-id;nombre;estatus-activo;tipo;parametro1;parametro2
+id;nombre;activa;tipo;parametro1;parametro2
 PROMO-001;Descuento Pan Dulce;true;CATEGORIA;Pan Dulce;0.10
 PROMO-002;Descuento volumen;true;MONTO;100.00;0.05
 PROMO-003;Cliente frecuente;true;CLIENTE;C001;0.15
-PROMO-004;Concha del día;false;PRODUCTO;P001;0.20
+PROMO-004;Concha del día;true;PRODUCTO;P001;0.20
