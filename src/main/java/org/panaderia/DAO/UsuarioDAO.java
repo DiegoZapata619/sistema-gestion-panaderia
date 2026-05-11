@@ -12,7 +12,7 @@ import java.util.List;
 
 public class UsuarioDAO implements CRUD<Usuario, String> {
 
-    private static final String ENCABEZADO = "nombre;hashPassword;rol";
+    private static final String ENCABEZADO = "nombre,hashPassword,rol";
 
     @Override
     public List<Usuario> leer(String ruta) throws IOException {
@@ -48,8 +48,8 @@ public class UsuarioDAO implements CRUD<Usuario, String> {
 
             for (Usuario u : usuarios) {
                 bw.write(
-                        u.getNombre() + ";" +
-                                u.getHashPassword() + ";" +
+                        u.getNombre() + "," +
+                                u.getHashPassword() + "," +
                                 u.getRol()
                 );
                 bw.newLine();

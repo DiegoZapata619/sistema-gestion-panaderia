@@ -34,7 +34,15 @@ public abstract class Usuario {
         return rol;
     }
 
+
     public void setRol(Rol rol) {
         this.rol = rol;
+    }
+
+    /// Usado por property ValueFactory en UsuariosController
+    /// Devuelve una cadena "********" para no mostrar la contraseña de cada usuario
+    public String getPassword(){
+        return "********";
+
     }
 }
