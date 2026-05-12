@@ -40,7 +40,6 @@ public class Venta {
         this.descuentoAplicado = BigDecimal.ZERO;
     }
 
-
     public void agregarDetalle (Producto producto, int cantidad){
         detalles.add(new DetalleVenta(producto,cantidad));
     }
@@ -68,6 +67,16 @@ public class Venta {
     public BigDecimal getDescuentoAplicado() {
         return descuentoAplicado;
     }
+    /**
+     * Permite restaurar el descuento al reconstruir una Venta desde el CSV.
+     * Solo debe usarse desde VentaDAO — en el flujo normal el descuento
+     * se calcula mediante aplicarPromociones().
+     */
+    public void setDescuentoAplicado(BigDecimal descuento) {
+        if (descuento == null || descuento.compareTo(BigDecimal.ZERO) < 0)
+            throw new IllegalArgumentException("El descuento no puede ser nulo ni negativo");
+        this.descuentoAplicado = descuento;
+    }
 
 
     public BigDecimal calcularSubtotal() {
@@ -93,6 +102,10 @@ public class Venta {
     /// la lista no pueda ser alterada de forma externa
     public List<DetalleVenta> getDetalles() {
         return Collections.unmodifiableList(detalles);
+    }
+
+    public List<DetalleVenta> getItems() {
+        return getDetalles();
     }
 
 

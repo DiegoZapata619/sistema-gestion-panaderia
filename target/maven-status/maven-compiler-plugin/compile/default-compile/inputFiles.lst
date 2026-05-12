@@ -5,6 +5,7 @@ C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderi
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\EmployeeController.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Cliente.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Descuentos\IEstrategiaDescuento.java
+C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\DAO\VentaDAO.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\Servicios\Autenticador.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Empleado.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\ClienteController.java
@@ -14,12 +15,14 @@ C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderi
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\InventoryController.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\DAO\UsuarioDAO.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Usuario.java
+C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\ReportesController.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\Main.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Descuentos\ValidadorCampos.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Descuentos\DescuentoCliente.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\DAO\CRUD.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\DetalleVenta.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\LoginController.java
+C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\Servicios\VentaServicio.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\DAO\ClienteDAO.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Rol.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Producto.java

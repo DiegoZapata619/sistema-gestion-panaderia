@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import org.panaderia.Servicios.Autenticador;
 import org.panaderia.model.Rol;
@@ -57,6 +59,13 @@ public class LoginController extends MenuController{
             lblMensaje.setText("Error al leer usuario");
             e.printStackTrace();
 
+        }
+    }
+
+    @FXML
+    private void handleKeyPress(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            inicioSesion();
         }
     }
 }

@@ -1,53 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.panaderia.controllers.AdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="614.0" prefWidth="720.0" styleClass="admin-container" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panaderia.controllers.AdminController">
    <children>
-      <TabPane layoutY="2.0" prefHeight="480.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="2.0" prefHeight="614.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab styleClass="Buttoin" text="Inicio">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="543.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="650.0">
                      <children>
-                        <Button layoutX="249.0" layoutY="285.0" mnemonicParsing="false" onAction="#abrirRepositorio" style="-fx-alignment: CENTER; -fx-background-color: #5ED4F2;                                 -fx-text-fill: white; -fx-border-radius: 1;" styleClass="Button" text="Ayuda">
+                        <Button layoutX="279.0" layoutY="310.0" mnemonicParsing="false" onAction="#abrirRepositorio" prefHeight="60.0" prefWidth="161.0" styleClass="primary large" text="Ayuda">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Button>
-                        <Text fx:id="NodeText" layoutX="115.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Para información acerca del uso de la aplicación, haga click en &quot;Ayuda&quot;" textAlignment="JUSTIFY" wrappingWidth="369.502685546875">
+                        <Text fx:id="NodeText" layoutX="175.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Para información acerca del uso de la aplicación, haga click en &quot;Ayuda&quot;" textAlignment="JUSTIFY" wrappingWidth="369.502685546875">
                            <font>
                               <Font name="Segoe UI" size="22.0" />
                            </font>
                         </Text>
-                        <ImageView fitHeight="130.0" fitWidth="127.0" layoutX="453.0" layoutY="40.0">
+                        <ImageView fitHeight="130.0" fitWidth="127.0" layoutX="549.0" layoutY="40.0">
                            <image>
                               <Image url="@../images/5222047.png" />
                            </image>
                         </ImageView>
-                        <Text fill="#0d0d0d" layoutX="146.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SISTEMA DE GESTIÓN DE PANADERIA" textAlignment="CENTER" wrappingWidth="308.98443603515625">
+                        <Text fill="#0d0d0d" layoutX="206.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="SISTEMA DE GESTIÓN DE PANADERIA" textAlignment="CENTER" wrappingWidth="308.98443603515625">
                            <font>
                               <Font name="Segoe UI Bold" size="36.0" />
                            </font>
                         </Text>
-                        <ImageView fitHeight="113.0" fitWidth="115.0" layoutX="29.0" layoutY="48.0">
+                        <ImageView fitHeight="113.0" fitWidth="115.0" layoutX="60.0" layoutY="49.0">
                            <image>
                               <Image url="@../images/992710.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="botonSalir" layoutX="213.0" layoutY="351.0" mnemonicParsing="false" onAction="#cerrarSesion" style="-fx-alignment: CENTER; -fx-background-color: #5ED4F2; -fx-text-fill:                                  white; -fx-border-radius: 1;" styleClass="Button" text="Cerrar Sesión">
+                        <Button fx:id="botonSalir" layoutX="260.0" layoutY="389.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="66.0" prefWidth="200.0" styleClass="danger large" text="Cerrar Sesión">
                            <font>
                               <Font size="24.0" />
                            </font>
@@ -60,19 +55,19 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ImageView fitHeight="106.0" fitWidth="123.0" layoutX="431.0" layoutY="51.0">
+                        <ImageView fitHeight="106.0" fitWidth="123.0" layoutX="530.0" layoutY="55.0">
                            <image>
                               <Image url="@../images/2478542.png" />
                            </image>
                         </ImageView>
-                        <Text fill="#0d0d0d" layoutX="146.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GESTIÓN DE INVENTARIO" textAlignment="CENTER" wrappingWidth="308.98443603515625">
+                        <Text fill="#0d0d0d" layoutX="206.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="GESTIÓN DE INVENTARIO" textAlignment="CENTER" wrappingWidth="308.98443603515625">
                            <font>
                               <Font name="Segoe UI Bold" size="36.0" />
                            </font>
                         </Text>
-                        <Button layoutX="121.0" layoutY="300.0" mnemonicParsing="false" onAction="#abrirGestorInventario" style="-fx-alignment: CENTER; -fx-background-color: #5ED4F2; -fx-text-fill: white; -fx-border-radius: 1;" text="Acceder a Gestor de Inventario">
+                        <Button layoutX="227.0" layoutY="355.0" mnemonicParsing="false" onAction="#abrirGestorInventario" prefHeight="72.0" prefWidth="266.0" styleClass="success large" text="Acceder a Gestor de Inventario">
                            <font>
-                              <Font size="24.0" />
+                              <Font size="29.0" />
                            </font>
                         </Button>
                         <Text fill="#dc3b3b" layoutX="186.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0">
@@ -80,17 +75,17 @@
                               <Font name="Segoe UI Semibold" size="20.0" />
                            </font>
                         </Text>
-                        <Text layoutX="226.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click para acceder ">
+                        <Text layoutX="286.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click para acceder ">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Text>
-                        <Button layoutX="160.0" layoutY="237.0" mnemonicParsing="false" onAction="#abrirGestorPromociones" style="-fx-alignment: CENTER; -fx-background-color: #5ED4F2; -fx-text-fill: white; -fx-border-radius: 1;" text="Acceder a Promociones">
+                        <Button layoutX="236.0" layoutY="265.0" mnemonicParsing="false" onAction="#abrirGestorPromociones" prefHeight="70.0" prefWidth="248.0" styleClass="warning large" text="Acceder a Promociones">
                            <font>
                               <Font size="24.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="125.0" fitWidth="134.0" layoutX="26.0" layoutY="41.0">
+                        <ImageView fitHeight="125.0" fitWidth="134.0" layoutX="43.0" layoutY="46.0">
                            <image>
                               <Image url="@../images/4293088.png" />
                            </image>
@@ -103,23 +98,72 @@
                     <fx:include source="clientes.fxml" />
                 </content>
             </Tab>
-            <Tab text="Reportes de Ventas">
+            <Tab text="Reportes/Ventas">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="Historial de Ventas">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="580.0" prefWidth="700.0">
                      <children>
-                        <Text layoutX="89.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text fill="#0d0d0d" layoutX="200.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="MÓDULO DE REPORTES" textAlignment="CENTER" wrappingWidth="300.0">
+                           <font>
+                              <Font name="Segoe UI Bold" size="32.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="120.0" fitWidth="120.0" layoutX="80.0" layoutY="50.0">
+                           <image>
+                              <Image url="@../images/992710.png" />
+                           </image>
+                        </ImageView>
+                        <Button layoutX="200.0" layoutY="180.0" mnemonicParsing="false" onAction="#abrirReportes" prefHeight="60.0" prefWidth="300.0" styleClass="success large" text="Ver Reportes de Ventas">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                        <Text layoutX="150.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Acceda al módulo completo de reportes y análisis de ventas" textAlignment="CENTER" wrappingWidth="400.0">
+                           <font>
+                              <Font name="Segoe UI" size="18.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="120.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Funcionalidades disponibles:" styleClass="form-label">
+                           <font>
+                              <Font name="Segoe UI Bold" size="20.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="140.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="• Historial completo de ventas">
+                           <font>
+                              <Font name="Segoe UI" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="140.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="• Reportes diarios, semanales, mensuales y anuales">
+                           <font>
+                              <Font name="Segoe UI" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="140.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="• Filtros por fecha, cliente y producto">
+                           <font>
+                              <Font name="Segoe UI" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="140.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="• Resúmenes por producto y categoría">
+                           <font>
+                              <Font name="Segoe UI" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="140.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="• Cálculo de ingresos acumulados">
+                           <font>
+                              <Font name="Segoe UI" size="16.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="520.0" layoutY="180.0">
+                           <image>
+                              <Image url="@../images/992710.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </content>
             </Tab>
             <Tab text="Usuarios">
                <content>
-                  <fx:include source="usersView.fxml"/>
+                  <fx:include source="usersView.fxml" />
                </content>
             </Tab>
         </tabs>

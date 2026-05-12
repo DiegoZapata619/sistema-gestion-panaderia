@@ -6,11 +6,15 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="399.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panaderia.controllers.ClienteController">
+<AnchorPane prefHeight="399.0" prefWidth="565.0" stylesheets="@../styles.css"
+            styleClass="form-container"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.panaderia.controllers.ClienteController">
 
     <children>
 
-        <TableView fx:id="tablaClientes" layoutX="12.0" layoutY="21.0" prefHeight="201.0" prefWidth="534.0">
+        <TableView fx:id="tablaClientes" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="525.0" styleClass="table-container">
             <columns>
                 <TableColumn fx:id="colNombre" prefWidth="120" text="Nombre" />
                 <TableColumn fx:id="colTelefono" prefWidth="120" text="Teléfono" />
@@ -21,14 +25,14 @@
             </columns>
         </TableView>
 
-        <TextField fx:id="txtId" layoutX="20" layoutY="240" promptText="ID" />
-        <TextField fx:id="txtNombre" layoutX="20" layoutY="270" promptText="Nombre" />
-        <TextField fx:id="txtTelefono" layoutX="20" layoutY="300" promptText="Teléfono" />
-        <TextField fx:id="txtCorreo" layoutX="20" layoutY="330" promptText="Correo" />
-        <TextField fx:id="txtPreferencias" layoutX="20" layoutY="360" promptText="Preferencias" />
+        <TextField fx:id="txtId" layoutX="30" layoutY="240" promptText="ID" prefWidth="120" />
+        <TextField fx:id="txtNombre" layoutX="30" layoutY="270" promptText="Nombre" prefWidth="120" />
+        <TextField fx:id="txtTelefono" layoutX="30" layoutY="300" promptText="Teléfono" prefWidth="120" />
+        <TextField fx:id="txtCorreo" layoutX="30" layoutY="330" promptText="Correo" prefWidth="120" />
+        <TextField fx:id="txtPreferencias" layoutX="30" layoutY="360" promptText="Preferencias" prefWidth="120" />
 
-        <Button layoutX="250" layoutY="270" onAction="#agregarCliente" text="Agregar" />
-        <Button layoutX="250" layoutY="310" onAction="#eliminarCliente" text="Eliminar" />
+        <Button layoutX="180" layoutY="270" onAction="#agregarCliente" text="Agregar" styleClass="success" prefWidth="100" />
+        <Button layoutX="180" layoutY="310" onAction="#eliminarCliente" text="Eliminar" styleClass="danger" prefWidth="100" />
 
     </children>
 </AnchorPane>

@@ -30,5 +30,10 @@ public class AdminController extends MenuController {
         Stage currentStage= (Stage) NodeText.getScene().getWindow();
         openNewStage(PROMOTIONS_VIEW, titulosFxml.get(PROMOTIONS_VIEW),currentStage, ADMIN_VIEW);
     }
+    
+    public void abrirReportes (){
+        Stage currentStage= (Stage) NodeText.getScene().getWindow();
+        openNewStage(REPORTS_VIEW, titulosFxml.get(REPORTS_VIEW), currentStage, ADMIN_VIEW);
+    }
 
 }
