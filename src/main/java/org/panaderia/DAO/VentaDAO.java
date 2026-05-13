@@ -5,35 +5,65 @@ import org.panaderia.model.*;
 import java.io.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * DAO para persistencia de ventas en CSV.
  *
- * Estructura del CSV — separador principal ";", sub-campos con "|":
- *   idVenta;fecha;idCliente;nombreCliente;idEmpleado;nombreEmpleado;metodoPago;
- *   ids_productos|..;cantidades|..;precios|..;subtotal;descuento;total
+ * Estructura del CSV — separador ";", productos múltiples con "|":
+ *   idVenta;fecha;idCliente;nombreCliente;nombreEmpleado;metodoPago;
+ *   idsProductos;cantidades;precios;subtotal;descuento;total
  *
- * Se usa ";" para evitar conflictos con nombres de productos o clientes que
- * puedan contener comas, consistente con el resto de DAOs del proyecto.
- * Se usa "|" como separador interno de listas para no colisionar con ";".
+ * La ruta se resuelve una sola vez con System.getProperty("user.dir")
+ * para garantizar consistencia entre sistemas operativos y máquinas.
  */
 public class VentaDAO implements CRUD<Venta, String> {
 
-    private static final String VENTAS_FILE = "Ventas.csv";
+    private static final String SEPARADOR = ";";
+    private static final String SEP_LISTA = "\\|";    // para split
+    private static final String SEP_LISTA_ESC = "|";      // para escribir
     private static final String ENCABEZADO =
             "idVenta;fecha;idCliente;nombreCliente;nombreEmpleado;metodoPago;" +
                     "idsProductos;cantidades;precios;subtotal;descuento;total";
+
+    private static final DateTimeFormatter FORMATO_FECHA =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+    /**
+     * Ruta resuelta una sola vez — válida en cualquier máquina.
+     */
+    private static final String VENTAS_FILE =
+            System.getProperty("user.dir") + "/data/ventas.csv";
+    private static final String PRODUCTOS_FILE = "Productos.csv";
+    private final ProductDAO productoDAO;
+
+    // ── Constructores ─────────────────────────────────────────────────────────
+
+    /**
+     * Constructor completo: con acceso al catálogo de productos.
+     */
+    public VentaDAO(ProductDAO productoDAO) {
+        this.productoDAO = productoDAO;
+    }
+
+    /**
+     * Constructor sin catálogo: los productos se reconstruyen solo con id y precio del CSV.
+     */
+    public VentaDAO() {
+        this.productoDAO = null;
+    }
 
     // ── CRUD ─────────────────────────────────────────────────────────────────
 
     /**
      * Lee todas las ventas del archivo CSV indicado.
-     * Si el archivo no existe devuelve una lista vacía en lugar de lanzar excepción,
-     * ya que es un estado válido al iniciar el sistema por primera vez.
+     * Si el archivo no existe devuelve una lista vacía — es un estado válido
+     * al iniciar el sistema por primera vez.
      */
     @Override
     public List<Venta> leer(String ruta) throws IOException {
@@ -43,11 +73,13 @@ public class VentaDAO implements CRUD<Venta, String> {
 
         try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
             br.readLine(); // saltar encabezado
+            
             String linea;
             while ((linea = br.readLine()) != null) {
                 linea = linea.trim();
                 if (linea.isEmpty()) continue;
-                String[] datos = linea.split(";");
+                
+                String[] datos = linea.split(SEPARADOR);
                 if (datos.length >= 12) {
                     Venta venta = parsearVentaDesdeCSV(datos);
                     if (venta != null) ventas.add(venta);
@@ -59,13 +91,11 @@ public class VentaDAO implements CRUD<Venta, String> {
 
     /**
      * Reescribe el archivo completo con la lista de ventas proporcionada.
-     * Crea el directorio padre si no existe.
      */
     @Override
     public void guardar(String ruta, List<Venta> elementos) throws IOException {
         File archivo = new File(ruta);
         archivo.getParentFile().mkdirs();
-
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo))) {
             bw.write(ENCABEZADO);
             bw.newLine();
@@ -79,17 +109,14 @@ public class VentaDAO implements CRUD<Venta, String> {
     /**
      * Agrega una venta al final del CSV sin reescribir el archivo completo.
      * Si el archivo no existe lo crea con encabezado.
-     * Más eficiente que guardar() para el caso de uso más común (registrar una venta nueva).
      */
     @Override
     public void agregar(String ruta, Venta nuevo) throws IOException {
         File archivo = new File(ruta);
         archivo.getParentFile().mkdirs();
-        boolean archivoNuevo = !archivo.exists();
-
+        boolean nuevoArchivo = !archivo.exists();
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(archivo, true))) {
-            // Si el archivo es nuevo, escribir encabezado primero
-            if (archivoNuevo) {
+            if (nuevoArchivo) {
                 bw.write(ENCABEZADO);
                 bw.newLine();
             }
@@ -100,13 +127,10 @@ public class VentaDAO implements CRUD<Venta, String> {
 
     /**
      * Elimina la venta con el ID indicado y reescribe el archivo.
-     * Devuelve true si encontró y eliminó la venta, false si no existía.
      */
     @Override
     public boolean eliminar(String ruta, String id) throws IOException {
-        File archivo = new File(ruta);
-        if (!archivo.exists()) return false;
-
+        if (!new File(ruta).exists()) return false;
         List<Venta> ventas = leer(ruta);
         boolean eliminado = ventas.removeIf(v -> v.getIdVenta().equals(id));
         if (eliminado) guardar(ruta, ventas);
@@ -115,19 +139,12 @@ public class VentaDAO implements CRUD<Venta, String> {
 
     /**
      * Reemplaza la venta con el mismo ID por la versión actualizada.
-     * Devuelve true si encontró la venta, false si no existía.
-     *
-     * CORRECCIÓN: la versión anterior devolvía true siempre, incluso
-     * cuando el ID no existía en el archivo.
      */
     @Override
     public boolean actualizar(String ruta, Venta actualizado) throws IOException {
-        File archivo = new File(ruta);
-        if (!archivo.exists()) return false;
-
+        if (!new File(ruta).exists()) return false;
         List<Venta> ventas = leer(ruta);
         boolean encontrado = false;
-
         for (int i = 0; i < ventas.size(); i++) {
             if (ventas.get(i).getIdVenta().equals(actualizado.getIdVenta())) {
                 ventas.set(i, actualizado);
@@ -135,7 +152,6 @@ public class VentaDAO implements CRUD<Venta, String> {
                 break;
             }
         }
-
         if (encontrado) guardar(ruta, ventas);
         return encontrado;
     }
@@ -144,69 +160,55 @@ public class VentaDAO implements CRUD<Venta, String> {
 
     /**
      * Reconstruye un objeto Venta desde un arreglo de campos del CSV.
-     *
-     * Se crean objetos "ligeros" de Cliente y Producto con solo los datos
-     * disponibles en el CSV (id y nombre). Esto es suficiente para reportes.
-     * Si se necesitara el objeto completo habría que cruzar con ClienteDAO
-     * y ProductDAO, lo cual haría la carga de ventas significativamente más lenta.
-     *
-     * CORRECCIONES aplicadas:
-     *   - Cliente ahora recibe los 7 parámetros que su constructor requiere
-     *   - Producto ahora recibe los tipos correctos (int para stock y stockMinimo)
-     *   - El descuento se restaura mediante setDescuentoAplicado() en lugar
-     *     de reflexión (getDeclaredField), que era frágil y evitable
-     *   - Los índices de campos están corregidos según el encabezado real
+     * <p>
+     * Indices:
+     * 0=idVenta, 1=fecha, 2=idCliente, 3=nombreCliente, 4=nombreEmpleado,
+     * 5=metodoPago, 6=idsProductos, 7=cantidades, 8=precios,
+     * 9=subtotal, 10=descuento, 11=total
+     * <p>
+     * Los productos se enriquecen desde ProductoDAO cuando esta disponible,
+     * garantizando que la categoria y demas atributos sean los del catalogo real.
+     * Si el producto no existe en el catalogo (fue eliminado), se crea un objeto
+     * ligero con los datos disponibles en el CSV como fallback.
      */
     private Venta parsearVentaDesdeCSV(String[] datos) {
         try {
-            // índices: 0=idVenta, 1=fecha, 2=idCliente, 3=nombreCliente,
-            //          4=nombreEmpleado, 5=metodoPago, 6=ids, 7=cantidades,
-            //          8=precios, 9=subtotal, 10=descuento, 11=total
+            // ── Fecha ────────────────────────────────────────────────────────
+            LocalDateTime fechaLeida = LocalDateTime.parse(datos[1].trim(), FORMATO_FECHA);
+            java.util.Date fechaDate = java.util.Date.from(
+                    fechaLeida.atZone(ZoneId.systemDefault()).toInstant());
 
-            // Cliente ligero: solo id y nombre, resto con valores neutros
-            // CORRECCIÓN: constructor de Cliente tiene 7 parámetros, no 5
-            Cliente cliente = new Cliente(
-                    datos[2].trim(),   // id
-                    datos[3].trim(),   // nombre
-                    "",                // telefono
-                    "",                // correo
-                    "",                // preferencias
-                    0,                 // puntos
-                    0                  // visitas
-            );
+            // ── Cliente y Empleado ligeros ────────────────────────────────────
+            Cliente cliente = new Cliente(datos[2].trim(), datos[3].trim());
+            Empleado empleado = new Empleado(datos[4].trim(), Rol.EMPLEADO);
+            MetodoPago metodo = MetodoPago.valueOf(datos[5].trim());
 
-            // Empleado ligero: solo nombre, hashPassword vacío
-            // CORRECCIÓN: datos[5] es metodoPago, no hashPassword — índice corregido
-            Empleado empleado = new Empleado(datos[4].trim(), "", Rol.EMPLEADO);
+            // ── Venta ─────────────────────────────────────────────────────────
+            Venta venta = new Venta(datos[0].trim(), cliente, empleado, metodo);
+            venta.setFecha(fechaDate);
 
-            MetodoPago metodoPago = MetodoPago.valueOf(datos[5].trim());
+            // ── Detalles: productos, cantidades y precios separados por "|" ──
+            String[] idsProductos = datos[6].split(SEP_LISTA);
+            String[] cantidades = datos[7].split(SEP_LISTA);
+            String[] precios = datos[8].split(SEP_LISTA);
 
-            Venta venta = new Venta(datos[0].trim(), cliente, empleado, metodoPago);
-
-            // Reconstruir detalles: ids, cantidades y precios separados por "|"
-            String[] idsProductos = datos[6].split("\\|");
-            String[] cantidades   = datos[7].split("\\|");
-
-            for (int i = 0; i < idsProductos.length; i++) {
-                // Producto ligero con solo id — precio y stock se leen del CSV, no del catálogo
-                // CORRECCIÓN: stock y stockMinimo son int, no String
-                Producto producto = new Producto(
-                        idsProductos[i].trim(), // id
-                        "",                     // nombre
-                        "",                     // categoria
-                        0.0,                    // precio (se usa el del CSV)
-                        0,                      // stock  ← int, no ""
-                        0,                      // stockMinimo ← int, no ""
-                        ""                      // descripcion
-                );
+            int minLength = Math.min(idsProductos.length, Math.min(cantidades.length, precios.length));
+            
+            for (int i = 0; i < minLength; i++) {
+                String id = idsProductos[i].trim();
+                if (id.isEmpty()) continue;
+                
                 int cantidad = Integer.parseInt(cantidades[i].trim());
+                double precio = Double.parseDouble(precios[i].trim());
+
+                Producto producto = resolverProducto(id, precio);
                 venta.agregarDetalle(producto, cantidad);
             }
 
-            // Restaurar descuento mediante setter en lugar de reflexión
-            // CORRECCIÓN: getDeclaredField era frágil, innecesario y evitable
-            if (datos.length > 10 && !datos[10].trim().isEmpty()) {
-                venta.setDescuentoAplicado(new BigDecimal(datos[10].trim()));
+            // ── Descuento ─────────────────────────────────────────────────────
+            String descuentoStr = datos[10].trim();
+            if (!descuentoStr.isEmpty() && !descuentoStr.equals("0.00")) {
+                venta.setDescuentoAplicado(new BigDecimal(descuentoStr));
             }
 
             return venta;
@@ -218,46 +220,71 @@ public class VentaDAO implements CRUD<Venta, String> {
     }
 
     /**
+     * Resuelve un Producto dado su ID.
+     * Si hay ProductoDAO disponible, busca el producto real en el catálogo
+     * para obtener nombre, categoría y demás atributos correctos.
+     * Si no lo encuentra (producto eliminado) o no hay DAO, crea un objeto
+     * ligero con el precio del CSV como fallback.
+     */
+    private Producto resolverProducto(String id, double precioCSV) {
+        if (productoDAO != null) {
+            try {
+                Optional<Producto> encontrado = productoDAO.buscarPorId(id);
+                if (encontrado.isPresent()) return encontrado.get();
+            } catch (IOException e) {
+                System.err.println("No se pudo cargar producto " + id + " del catálogo: " + e.getMessage());
+            }
+        }
+        // Fallback: producto ligero con solo los datos del CSV
+        return new Producto(id, precioCSV);
+    }
+
+    /**
      * Convierte una Venta a una línea CSV.
-     * Los sub-campos de productos se separan con "|" para no colisionar
-     * con el separador principal ";".
+     * Múltiples productos se serializan con "|" como separador interno.
      */
     private String ventaACSV(Venta venta) {
-        StringBuilder idsProductos = new StringBuilder();
-        StringBuilder cantidades   = new StringBuilder();
-        StringBuilder precios      = new StringBuilder();
+        StringBuilder ids = new StringBuilder();
+        StringBuilder cantidades = new StringBuilder();
+        StringBuilder precios = new StringBuilder();
 
         for (DetalleVenta detalle : venta.getDetalles()) {
-            idsProductos.append(detalle.getProducto().getId()).append("|");
-            cantidades.append(detalle.getCantidad()).append("|");
-            precios.append(detalle.getPrecioUnitario()).append("|");
+            ids.append(detalle.getProducto().getId()).append(SEP_LISTA_ESC);
+            cantidades.append(detalle.getCantidad()).append(SEP_LISTA_ESC);
+            precios.append(detalle.getPrecioUnitario()).append(SEP_LISTA_ESC);
         }
 
-        // Eliminar el "|" final de cada sub-campo
-        if (idsProductos.length() > 0) {
-            idsProductos.setLength(idsProductos.length() - 1);
+        // Quitar el "|" final de cada sub-campo
+        if (ids.length() > 0) {
+            ids.setLength(ids.length() - 1);
             cantidades.setLength(cantidades.length() - 1);
             precios.setLength(precios.length() - 1);
         }
 
-        return venta.getIdVenta()                  + ";" +
-                venta.getFecha().toString()          + ";" +
-                venta.getCliente().getId()           + ";" +
-                venta.getCliente().getNombre()       + ";" +
-                venta.getEmpleado().getNombre()      + ";" +
-                venta.getMetodoPago().toString()     + ";" +
-                idsProductos                         + ";" +
-                cantidades                           + ";" +
-                precios                              + ";" +
-                venta.calcularSubtotal()             + ";" +
-                venta.getDescuentoAplicado()         + ";" +
+        // Formatear la fecha sin segundos
+        String fechaStr = venta.getFecha().toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime()
+                .format(FORMATO_FECHA);
+
+        return venta.getIdVenta() + ";" +
+                fechaStr + ";" +
+                venta.getCliente().getId() + ";" +
+                venta.getCliente().getNombre() + ";" +
+                venta.getEmpleado().getNombre() + ";" +
+                venta.getMetodoPago() + ";" +
+                ids + ";" +
+                cantidades + ";" +
+                precios + ";" +
+                venta.calcularSubtotal() + ";" +
+                venta.getDescuentoAplicado() + ";" +
                 venta.calcularTotal();
     }
 
     // ── Consultas para reportes ───────────────────────────────────────────────
 
     /**
-     * Devuelve todas las ventas registradas en el archivo por defecto.
+     * Devuelve todas las ventas registradas.
      */
     public List<Venta> obtenerTodas() throws IOException {
         return leer(VENTAS_FILE);
@@ -265,7 +292,6 @@ public class VentaDAO implements CRUD<Venta, String> {
 
     /**
      * Filtra ventas cuya fecha coincide exactamente con el día indicado.
-     * Convierte Date → LocalDate usando la zona horaria del sistema.
      */
     public List<Venta> obtenerVentasPorFecha(LocalDate fecha) throws IOException {
         return leer(VENTAS_FILE).stream()
@@ -279,14 +305,14 @@ public class VentaDAO implements CRUD<Venta, String> {
     public List<Venta> obtenerVentasPorRangoFechas(LocalDate inicio, LocalDate fin) throws IOException {
         return leer(VENTAS_FILE).stream()
                 .filter(v -> {
-                    LocalDate fecha = toLocalDate(v);
-                    return !fecha.isBefore(inicio) && !fecha.isAfter(fin);
+                    LocalDate f = toLocalDate(v);
+                    return !f.isBefore(inicio) && !f.isAfter(fin);
                 })
                 .collect(Collectors.toList());
     }
 
     /**
-     * Filtra ventas asociadas a un cliente específico por su ID.
+     * Filtra ventas asociadas a un cliente por su ID.
      */
     public List<Venta> obtenerVentasPorCliente(String idCliente) throws IOException {
         return leer(VENTAS_FILE).stream()
@@ -295,7 +321,7 @@ public class VentaDAO implements CRUD<Venta, String> {
     }
 
     /**
-     * Filtra ventas que contengan al menos un renglón con el producto indicado.
+     * Filtra ventas que contengan al menos un detalle con el producto indicado.
      */
     public List<Venta> obtenerVentasPorProducto(String idProducto) throws IOException {
         return leer(VENTAS_FILE).stream()
@@ -307,12 +333,11 @@ public class VentaDAO implements CRUD<Venta, String> {
     // ── Helper ────────────────────────────────────────────────────────────────
 
     /**
-     * Convierte el Date de una venta a LocalDate usando la zona horaria del sistema.
-     * Se extrae como método para no repetir la misma cadena de conversión en cada filtro.
+     * Convierte la fecha de una Venta a LocalDate usando la zona horaria del sistema.
      */
     private LocalDate toLocalDate(Venta venta) {
         return venta.getFecha().toInstant()
-                .atZone(java.time.ZoneId.systemDefault())
+                .atZone(ZoneId.systemDefault())
                 .toLocalDate();
     }
 }

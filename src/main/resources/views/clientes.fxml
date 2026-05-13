@@ -4,17 +4,17 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="399.0" prefWidth="565.0" stylesheets="@../styles.css"
-            styleClass="form-container"
-            xmlns="http://javafx.com/javafx/25"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.panaderia.controllers.ClienteController">
+<AnchorPane prefHeight="399.0" prefWidth="565.0" styleClass="form-container" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panaderia.controllers.ClienteController">
 
     <children>
 
-        <TableView fx:id="tablaClientes" layoutX="20.0" layoutY="20.0" prefHeight="200.0" prefWidth="525.0" styleClass="table-container">
+        <TableView fx:id="tablaClientes" layoutX="37.0" layoutY="141.0" prefHeight="224.0" prefWidth="624.0" styleClass="table-container">
             <columns>
                 <TableColumn fx:id="colNombre" prefWidth="120" text="Nombre" />
                 <TableColumn fx:id="colTelefono" prefWidth="120" text="Teléfono" />
@@ -25,14 +25,29 @@
             </columns>
         </TableView>
 
-        <TextField fx:id="txtId" layoutX="30" layoutY="240" promptText="ID" prefWidth="120" />
-        <TextField fx:id="txtNombre" layoutX="30" layoutY="270" promptText="Nombre" prefWidth="120" />
-        <TextField fx:id="txtTelefono" layoutX="30" layoutY="300" promptText="Teléfono" prefWidth="120" />
-        <TextField fx:id="txtCorreo" layoutX="30" layoutY="330" promptText="Correo" prefWidth="120" />
-        <TextField fx:id="txtPreferencias" layoutX="30" layoutY="360" promptText="Preferencias" prefWidth="120" />
+        <TextField fx:id="txtId" layoutX="249.0" layoutY="385.0" prefWidth="120" promptText="ID" />
+        <TextField fx:id="txtNombre" layoutX="86.0" layoutY="385.0" prefWidth="120" promptText="Nombre" />
+        <TextField fx:id="txtTelefono" layoutX="52.0" layoutY="449.0" prefWidth="120" promptText="Teléfono" />
+        <TextField fx:id="txtCorreo" layoutX="179.0" layoutY="449.0" prefWidth="120" promptText="Correo" />
+        <TextField fx:id="txtPreferencias" layoutX="309.0" layoutY="449.0" prefWidth="120" promptText="Preferencias" />
 
-        <Button layoutX="180" layoutY="270" onAction="#agregarCliente" text="Agregar" styleClass="success" prefWidth="100" />
-        <Button layoutX="180" layoutY="310" onAction="#eliminarCliente" text="Eliminar" styleClass="danger" prefWidth="100" />
+        <Button layoutX="463.0" layoutY="385.0" onAction="#agregarCliente" prefHeight="44.0" prefWidth="120.0" styleClass="success" text="Agregar" />
+        <Button layoutX="463.0" layoutY="439.0" onAction="#eliminarCliente" prefHeight="44.0" prefWidth="120.0" styleClass="danger" text="Eliminar" />
+      <Text layoutX="179.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="GESTION DE CLIENTES">
+         <font>
+            <Font name="Segoe UI Bold" size="24.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="110.0" fitWidth="111.0" layoutX="37.0" layoutY="22.0">
+         <image>
+            <Image url="@../images/3225069.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="110.0" fitWidth="111.0" layoutX="567.0" layoutY="22.0">
+         <image>
+            <Image url="@../images/12073372.png" />
+         </image>
+      </ImageView>
 
     </children>
 </AnchorPane>

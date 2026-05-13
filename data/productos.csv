@@ -1,0 +1,5 @@
+id;nombre;categoria;precio;stock;stockMinimo;descripcion
+PROD001;Pan Dulce;Panadería;1500.00;50;10;Pan dulce tradicional con azúcar
+PROD002;Empanada;Panadería;800.00;30;5;Empanada de carne sazonada
+PROD003;Factura;Panadería;2500.00;20;5;Factura hojaldrada con crema
+PROD004;Bizcocho;Panadería;2000.00;15;3;Bizcocho esponjoso con vainilla

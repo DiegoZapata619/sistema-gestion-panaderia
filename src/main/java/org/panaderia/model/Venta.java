@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Venta {
     private final String idVenta;
-    private final Date fecha;
+    private Date fecha;
     private final Empleado empleado;
     private final Cliente cliente;
     private final MetodoPago metodoPago;
@@ -50,6 +50,9 @@ public class Venta {
 
     public Date getFecha() {
         return fecha;
+    }
+    public void setFecha(Date fecha) {
+        this.fecha=new Date();
     }
 
     public Empleado getEmpleado() {

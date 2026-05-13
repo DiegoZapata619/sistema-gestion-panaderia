@@ -19,6 +19,11 @@ public class MenuController {
     public static final String INVENTORY_VIEW = "/views/inventoryView.fxml";
     public static final String PROMOTIONS_VIEW = "/views/promocionesView.fxml";
     public static final String REPORTS_VIEW = "/views/reportesView.fxml";
+    public static final String VENTA_VIEW = "/views/generarVenta.fxml";
+    public static final String CONSULTAP_VIEW = "/views/consultaProductos.fxml";
+    public static final String CONSULTAC_VIEW = "/views/consultaClientes.fxml";
+    public static final String COMPROBANTE = "/views/comprobante.fxml";
+
     static Alert defaultAlert;
     static ButtonType acceptButton = new ButtonType("Aceptar");
     public static HashMap<String, String> titulosFxml = new HashMap<>();
@@ -31,6 +36,10 @@ public class MenuController {
         titulosFxml.put(INVENTORY_VIEW, "Inventario");
         titulosFxml.put(PROMOTIONS_VIEW, "Promociones");
         titulosFxml.put(REPORTS_VIEW, "Reportes");
+        titulosFxml.put(VENTA_VIEW,"Ventas");
+        titulosFxml.put(CONSULTAC_VIEW, "Consulta de Clientes");
+        titulosFxml.put(CONSULTAP_VIEW, "Consulta de Productos");
+        titulosFxml.put(COMPROBANTE, "Comprobante de Venta");
     }
 
     //Funcion para poder cerrar la ventana actual
@@ -51,7 +60,27 @@ public class MenuController {
      */
     public void openNewStage(String fxmlFileName, String title, Stage parentStage, String parentFxml) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(MenuController.class.getResource(fxmlFileName));
+            // Intentar cargar el recurso de múltiples formas
+            java.net.URL resourceUrl = null;
+            
+            // Primero intentar como recurso de clase
+            resourceUrl = MenuController.class.getResource(fxmlFileName);
+            
+            // Si no funciona, intentar como recurso del classpath
+            if (resourceUrl == null) {
+                resourceUrl = getClass().getClassLoader().getResource(fxmlFileName.substring(1)); // quitar el /
+            }
+            
+            // Si todavía no funciona, intentar con ruta absoluta relativa
+            if (resourceUrl == null) {
+                resourceUrl = getClass().getClassLoader().getResource("views" + fxmlFileName);
+            }
+            
+            if (resourceUrl == null) {
+                throw new IOException("No se pudo encontrar el recurso: " + fxmlFileName);
+            }
+            
+            FXMLLoader fxmlLoader = new FXMLLoader(resourceUrl);
             Scene scene = new Scene(fxmlLoader.load());
             Stage stage = new Stage();
             // Mantiene el tamaño dinámico.
@@ -67,6 +96,7 @@ public class MenuController {
 
         } catch (IOException | NullPointerException e) {
             setAlert(Alert.AlertType.WARNING, "Error cargando la vista: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 

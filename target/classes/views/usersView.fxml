@@ -19,11 +19,11 @@
                 <Font name="Segoe UI Bold" size="31.0" />
             </font>
         </Text>
-        <TableView fx:id="tablaUsuarios" layoutX="41.0" layoutY="349.0" onMouseClicked="#seleccionarFila" prefHeight="168.0" prefWidth="590.0" styleClass="table-container">
+        <TableView fx:id="tablaUsuarios" layoutX="21.0" layoutY="349.0" onMouseClicked="#seleccionarFila" prefHeight="178.0" prefWidth="678.0" styleClass="table-container">
             <columns>
-                <TableColumn fx:id="colNombre" prefWidth="189.5999755859375" text="Nombre" />
-                <TableColumn fx:id="colPassword" prefWidth="193.60003662109375" text="Contraseña" />
-                <TableColumn fx:id="colRol" prefWidth="199.19989013671875" text="Rol" />
+                <TableColumn fx:id="colNombre" prefWidth="204.00006103515625" text="Nombre" />
+                <TableColumn fx:id="colPassword" prefWidth="218.39996337890625" text="Contraseña" />
+                <TableColumn fx:id="colRol" prefWidth="214.39996337890625" text="Rol" />
             </columns>
         </TableView>
         <TextField fx:id="txtNombre" layoutX="159.0" layoutY="178.0" />

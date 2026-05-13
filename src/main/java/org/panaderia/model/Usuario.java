@@ -12,6 +12,11 @@ public abstract class Usuario {
         this.hashPassword=hashPassword;
         this.rol=rol;
     }
+    public Usuario (String nombre, Rol rol){
+        this.nombre=nombre;
+        hashPassword=null;
+        this.rol=rol;
+    }
 
     public String getNombre() {
         return nombre;

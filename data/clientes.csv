@@ -1,0 +1,5 @@
+id;nombre;telefono;correo;preferencias;puntos;visitas
+CLI001;Juan Pérez;555-1234;juan.perez@email.com;Pan dulce;50;12
+CLI002;Ana García;555-5678;ana.garcia@email.com;Empanadas;35;8
+CLI003;Carlos López;555-9012;carlos.lopez@email.com;Facturas;20;5
+CLI004;María Rodríguez;555-3456;maria.rodriguez@email.com;Bizcochos;45;10

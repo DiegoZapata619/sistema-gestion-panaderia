@@ -20,6 +20,11 @@ public class Producto {
         this.stockMinimo=stockMinimo;
         this.descripcion=descripcion;
     }
+    /// Constructor para accedido por ventas DAO.
+    /// Si un producto fue eliminado pero está registrado, se indica en reporte
+    public Producto(String id, double precio) {
+        this(id, "Producto eliminado", "", precio, 999, 0, "");
+    }
 
     //Getters y Setters para cada atributo
     public double getPrecio() {

@@ -1,0 +1,4 @@
+id;nombre;activa;tipo;parametro1;parametro2
+PROM001;Descuento 10% General;true;PORCENTAJE;10;0
+PROM002;Descuento $50 en compras mayores a $200;true;FIJO;200;50
+PROM003;2x1 en Panes;true;BUNDLE_X_Y;PAN;2

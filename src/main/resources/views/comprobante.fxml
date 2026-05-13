@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" styleClass="form-container" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panaderia.controllers.ComprobanteController">
+   <children>
+      <VBox layoutX="20.0" layoutY="20.0" prefHeight="560.0" prefWidth="460.0" spacing="15.0">
+         <children>
+            <Label styleClass="title-text" text="COMPROBANTE DE VENTA">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            
+            <Separator />
+            
+            <!-- Información General -->
+            <VBox spacing="8.0">
+               <children>
+                  <Label styleClass="form-label" text="ID Venta:" />
+                  <Label fx:id="lblIdVenta" styleClass="form-value" text="V001" />
+                  
+                  <Label styleClass="form-label" text="Fecha:" />
+                  <Label fx:id="lblFecha" styleClass="form-value" text="12/05/2026 14:30" />
+                  
+                  <Label styleClass="form-label" text="Cliente:" />
+                  <Label fx:id="lblCliente" styleClass="form-value" text="Juan Pérez" />
+                  
+                  <Label styleClass="form-label" text="Empleado:" />
+                  <Label fx:id="lblEmpleado" styleClass="form-value" text="María García" />
+                  
+                  <Label styleClass="form-label" text="Método de Pago:" />
+                  <Label fx:id="lblMetodoPago" styleClass="form-value" text="TARJETA" />
+               </children>
+            </VBox>
+            
+            <Separator />
+            
+            <!-- Detalles de Productos -->
+            <VBox spacing="8.0">
+               <children>
+                  <Label styleClass="form-label" text="DETALLE DE PRODUCTOS:" />
+                  <VBox fx:id="contenedorProductos" prefHeight="200.0" prefWidth="460.0" spacing="5.0" />
+               </children>
+            </VBox>
+            
+            <Separator />
+            
+            <!-- Resumen Financiero -->
+            <VBox spacing="8.0">
+               <children>
+                  <AnchorPane prefHeight="25.0" prefWidth="460.0">
+                     <children>
+                        <Label layoutX="0.0" layoutY="0.0" styleClass="form-label" text="Subtotal:" />
+                        <Label fx:id="lblSubtotal" layoutX="350.0" layoutY="0.0" styleClass="form-value" text="100.00" />
+                     </children>
+                  </AnchorPane>
+                  
+                  <AnchorPane prefHeight="25.0" prefWidth="460.0">
+                     <children>
+                        <Label layoutX="0.0" layoutY="0.0" styleClass="form-label" text="Descuento:" />
+                        <Label fx:id="lblDescuento" layoutX="350.0" layoutY="0.0" styleClass="form-value" text="0.00" />
+                     </children>
+                  </AnchorPane>
+                  
+                  <AnchorPane prefHeight="25.0" prefWidth="460.0">
+                     <children>
+                        <Label layoutX="0.0" layoutY="0.0" styleClass="form-label" text="TOTAL:" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                        <Label fx:id="lblTotal" layoutX="350.0" layoutY="0.0" styleClass="form-value" text="100.00" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+            
+            <Separator />
+            
+            <!-- Botones -->
+            <AnchorPane prefHeight="50.0" prefWidth="460.0">
+               <children>
+                  <Button fx:id="btnImprimir" layoutX="100.0" layoutY="10.0" mnemonicParsing="false" onAction="#imprimirComprobante" prefHeight="30.0" prefWidth="100.0" styleClass="primary" text="Imprimir" />
+                  <Button fx:id="btnCerrar" layoutX="260.0" layoutY="10.0" mnemonicParsing="false" onAction="#cerrarComprobante" prefHeight="30.0" prefWidth="100.0" styleClass="danger" text="Cerrar" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -16,10 +16,12 @@ import java.util.stream.Collectors;
 public class VentaServicio {
     private final VentaDAO ventaDAO;
     private final ProductDAO productDAO;
+    private final String RUTA_VENTA;
 
     public VentaServicio() {
-        this.ventaDAO = new VentaDAO();
         this.productDAO = new ProductDAO();
+        this.ventaDAO = new VentaDAO(productDAO);
+        this.RUTA_VENTA = System.getProperty("user.dir") + "/data/ventas.csv";
     }
 
     /**
@@ -30,7 +32,7 @@ public class VentaServicio {
         actualizarInventario(venta);
         
         // Guardar la venta
-        ventaDAO.agregar("data/ventas.csv", venta);
+        ventaDAO.agregar(RUTA_VENTA, venta);
         
         // Generar comprobante
         generarComprobante(venta);
@@ -40,7 +42,7 @@ public class VentaServicio {
      * RF-3.1.4.2: Obtener historial completo de ventas
      */
     public List<Venta> obtenerHistorialVentas() throws IOException {
-        return ventaDAO.leer("data/ventas.csv");
+        return ventaDAO.leer(RUTA_VENTA);
     }
 
     /**
@@ -162,19 +164,19 @@ public class VentaServicio {
         return new ReporteVentas("REPORTE SEMANAL - " + inicioSemana + " a " + finSemana, ventasSemana);
     }
 
-    public ReporteVentas generarReporteMensual(int año, int mes) throws IOException {
-        YearMonth yearMonth = YearMonth.of(año, mes);
+    public ReporteVentas generarReporteMensual(int ano, int mes) throws IOException {
+        YearMonth yearMonth = YearMonth.of(ano, mes);
         LocalDate inicio = yearMonth.atDay(1);
         LocalDate fin = yearMonth.atEndOfMonth();
         List<Venta> ventasMes = filtrarVentasPorRangoFechas(inicio, fin);
         return new ReporteVentas("REPORTE MENSUAL - " + yearMonth, ventasMes);
     }
 
-    public ReporteVentas generarReporteAnual(int año) throws IOException {
-        LocalDate inicio = LocalDate.of(año, 1, 1);
-        LocalDate fin = LocalDate.of(año, 12, 31);
-        List<Venta> ventasAño = filtrarVentasPorRangoFechas(inicio, fin);
-        return new ReporteVentas("REPORTE ANUAL - " + año, ventasAño);
+    public ReporteVentas generarReporteAnual(int ano) throws IOException {
+        LocalDate inicio = LocalDate.of(ano, 1, 1);
+        LocalDate fin = LocalDate.of(ano, 12, 31);
+        List<Venta> ventasAno = filtrarVentasPorRangoFechas(inicio, fin);
+        return new ReporteVentas("REPORTE ANUAL - " + ano, ventasAno);
     }
 
     /**

@@ -10,88 +10,87 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="725.0" stylesheets="@../styles.css" styleClass="form-container" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panaderia.controllers.InventoryController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="869.0" styleClass="form-container" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panaderia.controllers.InventoryController">
    <children>
-      <Text layoutX="230.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-underline: TRUE;" text="INVENTARIO DE PRODUCTOS" textAlignment="CENTER" styleClass="title-text" wrappingWidth="290.08282470703125">
+      <Text layoutX="298.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-underline: TRUE;" styleClass="title-text" text="INVENTARIO DE PRODUCTOS" textAlignment="CENTER" wrappingWidth="290.08282470703125">
          <font>
             <Font name="Segoe UI Bold" size="26.0" />
          </font>
       </Text>
-      <ImageView fitHeight="116.0" fitWidth="123.0" layoutX="93.0" layoutY="14.0">
+      <ImageView fitHeight="116.0" fitWidth="123.0" layoutX="141.0" layoutY="14.0">
          <image>
             <Image url="@../images/2897785.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tablaProductos" onMouseClicked="#seleccionarFila"
-                 layoutX="23.0" layoutY="313.0" prefHeight="251.0" prefWidth="679.0" styleClass="table-container">
+      <TableView fx:id="tablaProductos" layoutX="46.0" layoutY="321.0" onMouseClicked="#seleccionarFila" prefHeight="266.0" prefWidth="794.0" styleClass="table-container">
         <columns>
           <TableColumn fx:id="colID" prefWidth="81.60000801086426" text="ID" />
           <TableColumn fx:id="colNombre" prefWidth="91.19994354248047" text="NOMBRE" />
             <TableColumn fx:id="colCategoria" prefWidth="127.199951171875" text="CATEGORIA" />
-            <TableColumn fx:id="colPrecio" prefWidth="67.20001220703125" text="PRECIO" />
-            <TableColumn fx:id="colStock" prefWidth="61.5999755859375" text="STOCK" />
-            <TableColumn fx:id="colStockMinimo" prefWidth="108.00009155273438" text="STOCK_MINIMO" />
-            <TableColumn fx:id="colDescripcion" prefWidth="151.99993896484375" text="DESCRIPCION" />
+            <TableColumn fx:id="colPrecio" prefWidth="79.199951171875" text="PRECIO" />
+            <TableColumn fx:id="colStock" prefWidth="73.60003662109375" text="STOCK" />
+            <TableColumn fx:id="colStockMinimo" prefWidth="128.79998779296875" text="STOCK_MINIMO" />
+            <TableColumn fx:id="colDescripcion" prefWidth="160.00006103515625" text="DESCRIPCION" />
         </columns>
       </TableView>
-      <TextField fx:id="txtId" layoutX="129.0" layoutY="161.0" />
-      <Text fontSmoothingType="LCD" layoutX="28.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID " styleClass="form-label">
+      <TextField fx:id="txtId" layoutX="149.0" layoutY="138.0" />
+      <Text fontSmoothingType="LCD" layoutX="34.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="ID ">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text fontSmoothingType="LCD" layoutX="28.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NOMBRE" styleClass="form-label">
+      <Text fontSmoothingType="LCD" layoutX="34.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="NOMBRE">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="txtNombre" layoutX="129.0" layoutY="195.0" />
-      <Text fontSmoothingType="LCD" layoutX="28.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CATEGORIA" styleClass="form-label">
+      <TextField fx:id="txtNombre" layoutX="149.0" layoutY="185.0" />
+      <Text fontSmoothingType="LCD" layoutX="34.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="CATEGORIA">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="txtCategoria" layoutX="129.0" layoutY="229.0" />
-      <TextField fx:id="txtPrecio" layoutX="129.0" layoutY="265.0" />
-      <Text fontSmoothingType="LCD" layoutX="28.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PRECIO" styleClass="form-label">
+      <TextField fx:id="txtCategoria" layoutX="149.0" layoutY="229.0" />
+      <TextField fx:id="txtPrecio" layoutX="149.0" layoutY="275.0" />
+      <Text fontSmoothingType="LCD" layoutX="34.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="PRECIO">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="txtStock" layoutX="393.0" layoutY="158.0" />
-      <Text fontSmoothingType="LCD" layoutX="301.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STOCK" styleClass="form-label">
+      <TextField fx:id="txtStock" layoutX="492.0" layoutY="152.0" />
+      <Text fontSmoothingType="LCD" layoutX="360.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="STOCK">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Text fontSmoothingType="LCD" layoutX="300.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="STOCK MINIMO" wrappingWidth="74.59686279296875" styleClass="form-label">
+      <Text fontSmoothingType="LCD" layoutX="360.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="STOCK MINIMO" wrappingWidth="81.54296875">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="txtStockMinimo" layoutX="393.0" layoutY="208.0" />
-      <TextField fx:id="txtDescripcion" layoutX="393.0" layoutY="263.0" />
-      <Text fontSmoothingType="LCD" layoutX="288.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DESCRIPCION" styleClass="form-label">
+      <TextField fx:id="txtStockMinimo" layoutX="492.0" layoutY="207.0" />
+      <TextField fx:id="txtDescripcion" layoutX="492.0" layoutY="262.0" />
+      <Text fontSmoothingType="LCD" layoutX="360.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="DESCRIPCION">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <Button layoutX="591.0" layoutY="142.0" mnemonicParsing="false" onAction="#agregarProducto" text="AÑADIR" styleClass="success">
+      <Button layoutX="691.0" layoutY="131.0" mnemonicParsing="false" onAction="#agregarProducto" styleClass="success" text="AÑADIR">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="585.0" layoutY="181.0" mnemonicParsing="false" onAction="#eliminarProducto" text="ELIMINAR" styleClass="danger">
+      <Button layoutX="691.0" layoutY="174.0" mnemonicParsing="false" onAction="#eliminarProducto" styleClass="danger" text="ELIMINAR">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="575.0" layoutY="218.0" mnemonicParsing="false" onAction="#actualizarProducto" text="ACTUALIZAR" styleClass="warning">
+      <Button layoutX="691.0" layoutY="217.0" mnemonicParsing="false" onAction="#actualizarProducto" styleClass="warning" text="ACTUALIZAR">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button layoutX="561.0" layoutY="260.0" mnemonicParsing="false" onAction="#limpiarCampos" text="LIMPIAR CELDAS" styleClass="primary">
+      <Button layoutX="691.0" layoutY="263.0" mnemonicParsing="false" onAction="#limpiarCampos" styleClass="primary" text="LIMPIAR CELDAS">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>

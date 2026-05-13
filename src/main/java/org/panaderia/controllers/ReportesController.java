@@ -118,7 +118,7 @@ public class ReportesController extends MenuController {
                 new javafx.beans.property.SimpleStringProperty(
                         cellData.getValue().getEmpleado().getNombre()));
 
-        // Total calculado — no es un campo almacenado sino un método de cálculo
+        // Total calculado — no es un campo almacenado sino un metodo de cálculo
         colTotal.setCellValueFactory(cellData ->
                 new javafx.beans.property.SimpleObjectProperty<>(
                         cellData.getValue().calcularTotal()));
@@ -153,8 +153,8 @@ public class ReportesController extends MenuController {
     }
 
     /**
-     * Puebla el ComboBox de tipos de reporte con las opciones disponibles
-     * y selecciona "Diario" por defecto.
+     * Configura la combo box de tipo de reporte para mostrar las opciones disponibles
+     * selecciona "Diario" por defecto.
      */
     private void configurarCombos() {
         comboTipoReporte.getItems().addAll("Diario", "Semanal", "Mensual", "Anual", "Personalizado");
@@ -214,7 +214,7 @@ public class ReportesController extends MenuController {
                 String productoLower = filtroProducto.toLowerCase();
                 resultado = resultado.stream()
                         .filter(v -> v.getDetalles().stream()
-                                .anyMatch(d -> d.getProducto().getNombre()
+                                .anyMatch(d -> d.getProducto().getId()
                                         .toLowerCase().contains(productoLower)))
                         .collect(Collectors.toList());
             }

@@ -6,10 +6,13 @@ import org.panaderia.model.Producto;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ProductDAO implements CRUD<Producto, String> {
 
     private static final String ENCABEZADO = "id,nombre,categoria,precio,stock,stockMinimo,descripcion";
+    private static final String PRODUCTOS_FILE =
+            System.getProperty("user.dir") + "/data/productos.csv";
 
     @Override
     public List<Producto> leer(String ruta) throws IOException {
@@ -100,6 +103,24 @@ public class ProductDAO implements CRUD<Producto, String> {
             guardar(ruta,productos);
         }
         return encontrado;
+    }
+
+    // ── Consultas ─────────────────────────────────────────────────────────────
+
+    /**
+     * Busca un producto por ID en el archivo por defecto.
+     * Devuelve Optional.empty() si no existe — usado por VentaDAO
+     * Con la introducción de esta consulta optional, se agrega un constructor nuevo a producto
+     */
+    public Optional<Producto> buscarPorId(String id) throws IOException {
+        return leer(PRODUCTOS_FILE).stream()
+                .filter(p -> p.getId().equals(id))
+                .findFirst();
+    }
+
+    /** Devuelve todos los productos del archivo por defecto. */
+    public List<Producto> obtenerTodos() throws IOException {
+        return leer(PRODUCTOS_FILE);
     }
 
 }

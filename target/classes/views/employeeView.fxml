@@ -1,16 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles.css" styleClass="form-container" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+            minWidth="-Infinity" prefHeight="614.0" prefWidth="720.0" styleClass="admin-container" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.panaderia.controllers.EmployeeController">
    <children>
-      <TextField text="EN PROCESO: EMPLEADO" styleClass="title-text">
-         <font>
-            <Font size="47.0" />
-         </font>
-      </TextField>
+      <TabPane layoutY="2.0" prefHeight="614.0" prefWidth="720.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Inicio">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="650.0">
+                     <children>
+                        <Button layoutX="279.0" layoutY="310.0" mnemonicParsing="false" onAction="#abrirGenerarVenta" prefHeight="60.0" prefWidth="161.0" styleClass="success large" text="Nueva Venta">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Text fx:id="NodeText" layoutX="175.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Para registrar una nueva venta, haga click en &quot;Nueva Venta&quot;" textAlignment="JUSTIFY" wrappingWidth="369.502685546875">
+                           <font>
+                              <Font name="Segoe UI" size="22.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="130.0" fitWidth="127.0" layoutX="549.0" layoutY="40.0">
+                           <image>
+                              <Image url="@../images/5222047.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#0d0d0d" layoutX="206.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="SISTEMA DE EMPLEADO" textAlignment="CENTER" wrappingWidth="308.98443603515625">
+                           <font>
+                              <Font name="Segoe UI Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="113.0" fitWidth="115.0" layoutX="60.0" layoutY="49.0">
+                           <image>
+                              <Image url="@../images/992710.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="botonSalir" layoutX="260.0" layoutY="389.0" mnemonicParsing="false" onAction="#cerrarSesion" prefHeight="66.0" prefWidth="200.0" styleClass="danger large" text="Cerrar Sesión">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Productos">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="650.0">
+                     <children>
+                        <Button layoutX="279.0" layoutY="310.0" mnemonicParsing="false" onAction="#abrirConsultaProductos" prefHeight="60.0" prefWidth="161.0" styleClass="primary large" text="Consultar Productos">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Text layoutX="175.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Para consultar el catálogo de productos, haga click en &quot;Consultar Productos&quot;" textAlignment="JUSTIFY" wrappingWidth="369.502685546875">
+                           <font>
+                              <Font name="Segoe UI" size="22.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="130.0" fitWidth="127.0" layoutX="549.0" layoutY="40.0">
+                           <image>
+                              <Image url="@../images/5222047.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#0d0d0d" layoutX="206.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="CONSULTA DE PRODUCTOS" textAlignment="CENTER" wrappingWidth="308.98443603515625">
+                           <font>
+                              <Font name="Segoe UI Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="113.0" fitWidth="115.0" layoutX="60.0" layoutY="49.0">
+                           <image>
+                              <Image url="@../images/992710.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Clientes">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="470.0" prefWidth="650.0">
+                     <children>
+                        <Button layoutX="279.0" layoutY="310.0" mnemonicParsing="false" onAction="#abrirConsultaClientes" prefHeight="60.0" prefWidth="161.0" styleClass="primary large" text="Consultar Clientes">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Button>
+                        <Text layoutX="175.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Para consultar la lista de clientes, haga click en &quot;Consultar Clientes&quot;" textAlignment="JUSTIFY" wrappingWidth="369.502685546875">
+                           <font>
+                              <Font name="Segoe UI" size="22.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="130.0" fitWidth="127.0" layoutX="549.0" layoutY="40.0">
+                           <image>
+                              <Image url="@../images/5222047.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#0d0d0d" layoutX="206.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="CONSULTA DE CLIENTES" textAlignment="CENTER" wrappingWidth="308.98443603515625">
+                           <font>
+                              <Font name="Segoe UI Bold" size="36.0" />
+                           </font>
+                        </Text>
+                        <ImageView fitHeight="113.0" fitWidth="115.0" layoutX="60.0" layoutY="49.0">
+                           <image>
+                              <Image url="@../images/992710.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
    </children>
-</VBox>
+</AnchorPane>

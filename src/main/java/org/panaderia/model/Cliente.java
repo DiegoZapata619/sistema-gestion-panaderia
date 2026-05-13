@@ -23,6 +23,15 @@ public class Cliente {
         this.puntos = puntos;
         this.visitas = visitas;
     }
+    public Cliente (String id, String nombre){
+        this.id=id;
+        this.nombre=nombre;
+        telefono=null;
+        correo=null;
+        preferencias=null;
+        puntos=0;
+        visitas=0;
+    }
 
     // GETTERS
     public String getId() { return id; }

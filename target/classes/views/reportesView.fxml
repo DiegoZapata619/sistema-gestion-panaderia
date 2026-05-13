@@ -1,58 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700.0" prefWidth="900.0" styleClass="form-container" stylesheets="@../styles.css" 
-            xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" 
-            fx:controller="org.panaderia.controllers.ReportesController">
+<AnchorPane prefHeight="649.0" prefWidth="980.0" styleClass="form-container" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panaderia.controllers.ReportesController">
     
     <children>
-        <Text layoutX="300.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" 
-              styleClass="title-text" text="MÓDULO DE REPORTES DE VENTAS" textAlignment="CENTER" 
-              wrappingWidth="300.0">
+        <Text layoutX="300.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title-text" text="MÓDULO DE REPORTES DE VENTAS" textAlignment="CENTER" wrappingWidth="300.0">
             <font>
                 <Font name="Segoe UI Bold" size="28.0" />
             </font>
         </Text>
         
-        <TabPane fx:id="tabPaneReportes" layoutX="20.0" layoutY="70.0" 
-                 prefHeight="600.0" prefWidth="860.0" tabClosingPolicy="UNAVAILABLE">
+        <TabPane fx:id="tabPaneReportes" layoutX="20.0" layoutY="70.0" prefHeight="669.0" prefWidth="910.0" tabClosingPolicy="UNAVAILABLE">
             
             <!-- Tab 1: Historial de Ventas -->
             <Tab fx:id="tabHistorialVentas" text="Historial de Ventas">
                 <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="570.0" prefWidth="860.0">
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="541.0" prefWidth="853.0">
                         <children>
                             <!-- Filtros -->
-                            <Text layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" 
-                                  styleClass="form-label" text="FILTROS DE BÚSQUEDA">
+                            <Text layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="FILTROS DE BÚSQUEDA">
                                 <font>
                                     <Font name="Segoe UI Bold" size="18.0" />
                                 </font>
                             </Text>
                             
-                            <DatePicker fx:id="datePickerFiltro" layoutX="20.0" layoutY="50.0" 
-                                       prefWidth="150.0" promptText="Fecha" />
+                            <DatePicker fx:id="datePickerFiltro" layoutX="20.0" layoutY="50.0" prefWidth="150.0" promptText="Fecha" />
                             
-                            <TextField fx:id="txtFiltroCliente" layoutX="190.0" layoutY="50.0" 
-                                       prefWidth="150.0" promptText="ID Cliente" />
+                            <TextField fx:id="txtFiltroCliente" layoutX="190.0" layoutY="50.0" prefWidth="150.0" promptText="ID Cliente" />
                             
-                            <TextField fx:id="txtFiltroProducto" layoutX="360.0" layoutY="50.0" 
-                                       prefWidth="150.0" promptText="ID Producto" />
+                            <TextField fx:id="txtFiltroProducto" layoutX="360.0" layoutY="50.0" prefWidth="150.0" promptText="ID Producto" />
                             
-                            <Button fx:id="btnFiltrar" layoutX="530.0" layoutY="50.0" 
-                                    mnemonicParsing="false" onAction="#filtrarVentas" 
-                                    styleClass="primary" text="Filtrar" prefWidth="80.0" />
+                            <Button fx:id="btnFiltrar" layoutX="530.0" layoutY="50.0" mnemonicParsing="false" onAction="#filtrarVentas" prefHeight="42.0" prefWidth="128.0" styleClass="primary" text="Filtrar" />
                             
-                            <Button fx:id="btnLimpiarFiltros" layoutX="620.0" layoutY="50.0" 
-                                    mnemonicParsing="false" onAction="#limpiarFiltros" 
-                                    styleClass="warning" text="Limpiar" prefWidth="80.0" />
+                            <Button fx:id="btnLimpiarFiltros" layoutX="673.0" layoutY="50.0" mnemonicParsing="false" onAction="#limpiarFiltros" prefHeight="42.0" prefWidth="130.0" styleClass="warning" text="Limpiar" />
                             
                             <!-- Tabla de Ventas -->
-                            <TableView fx:id="tablaVentas" layoutX="20.0" layoutY="100.0" 
-                                       prefHeight="450.0" prefWidth="820.0" styleClass="table-container">
+                            <TableView fx:id="tablaVentas" layoutX="45.0" layoutY="105.0" prefHeight="482.0" prefWidth="820.0" styleClass="table-container">
                                 <columns>
                                     <TableColumn fx:id="colIdVenta" prefWidth="120.0" text="ID Venta" />
                                     <TableColumn fx:id="colFecha" prefWidth="150.0" text="Fecha y Hora" />
@@ -71,46 +67,34 @@
                 <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="570.0" prefWidth="860.0">
                         <children>
-                            <Text layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" 
-                                  styleClass="form-label" text="CONFIGURACIÓN DE REPORTE">
+                            <Text layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="CONFIGURACIÓN DE REPORTE">
                                 <font>
                                     <Font name="Segoe UI Bold" size="18.0" />
                                 </font>
                             </Text>
                             
-                            <Text layoutX="20.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" 
-                                  styleClass="form-label" text="Tipo de Reporte:" />
+                            <Text layoutX="38.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="Tipo de Reporte:" />
                             
-                            <ComboBox fx:id="comboTipoReporte" layoutX="140.0" layoutY="55.0" 
-                                      prefWidth="150.0" />
+                            <ComboBox fx:id="comboTipoReporte" layoutX="200.0" layoutY="47.0" prefWidth="150.0" />
                             
-                            <Text layoutX="20.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" 
-                                  styleClass="form-label" text="Fecha Inicio:" />
+                            <Text layoutX="92.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="Fecha Inicio:" />
                             
-                            <DatePicker fx:id="datePickerInicio" layoutX="140.0" layoutY="95.0" 
-                                       prefWidth="150.0" />
+                            <DatePicker fx:id="datePickerInicio" layoutX="241.0" layoutY="115.0" prefWidth="150.0" />
                             
-                            <Text layoutX="320.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" 
-                                  styleClass="form-label" text="Fecha Fin:" />
+                            <Text layoutX="412.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="Fecha Fin:" />
                             
-                            <DatePicker fx:id="datePickerFin" layoutX="400.0" layoutY="95.0" 
-                                       prefWidth="150.0" />
+                            <DatePicker fx:id="datePickerFin" layoutX="512.0" layoutY="115.0" prefWidth="150.0" />
                             
-                            <Button fx:id="btnGenerarReporte" layoutX="580.0" layoutY="95.0" 
-                                    mnemonicParsing="false" onAction="#generarReportePeriodo" 
-                                    styleClass="success" text="Generar Reporte" prefWidth="120.0" />
+                            <Button fx:id="btnGenerarReporte" layoutX="689.0" layoutY="108.0" mnemonicParsing="false" onAction="#generarReportePeriodo" prefHeight="42.0" prefWidth="175.0" styleClass="success" text="Generar Reporte" />
                             
                             <!-- Área de Reporte -->
-                            <Text layoutX="20.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" 
-                                  styleClass="form-label" text="REPORTE GENERADO">
+                            <Text layoutX="52.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="REPORTE GENERADO">
                                 <font>
                                     <Font name="Segoe UI Bold" size="18.0" />
                                 </font>
                             </Text>
                             
-                            <TextArea fx:id="txtAreaReporte" layoutX="20.0" layoutY="170.0" 
-                                      prefHeight="380.0" prefWidth="820.0" 
-                                      styleClass="table-container" editable="false" wrapText="true" />
+                            <TextArea fx:id="txtAreaReporte" editable="false" layoutX="45.0" layoutY="196.0" prefHeight="405.0" prefWidth="820.0" styleClass="table-container" wrapText="true" />
                         </children>
                     </AnchorPane>
                 </content>
@@ -121,39 +105,30 @@
                 <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="570.0" prefWidth="860.0">
                         <children>
-                            <Text layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" 
-                                  styleClass="form-label" text="CONFIGURACIÓN DE RESUMEN">
+                            <Text layoutX="20.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="CONFIGURACIÓN DE RESUMEN">
                                 <font>
                                     <Font name="Segoe UI Bold" size="18.0" />
                                 </font>
                             </Text>
                             
-                            <Text layoutX="20.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" 
-                                  styleClass="form-label" text="Período:" />
+                            <Text layoutX="20.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="Período:" />
                             
-                            <DatePicker fx:id="datePickerResumenInicio" layoutX="20.0" layoutY="85.0" 
-                                       prefWidth="150.0" promptText="Fecha Inicio" />
+                            <DatePicker fx:id="datePickerResumenInicio" layoutX="20.0" layoutY="85.0" prefWidth="150.0" promptText="Fecha Inicio" />
                             
-                            <Text layoutX="190.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" 
-                                  styleClass="form-label" text="a" />
+                            <Text layoutX="190.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="a" />
                             
-                            <DatePicker fx:id="datePickerResumenFin" layoutX="220.0" layoutY="85.0" 
-                                       prefWidth="150.0" promptText="Fecha Fin" />
+                            <DatePicker fx:id="datePickerResumenFin" layoutX="220.0" layoutY="85.0" prefWidth="150.0" promptText="Fecha Fin" />
                             
-                            <Button fx:id="btnGenerarResumen" layoutX="390.0" layoutY="85.0" 
-                                    mnemonicParsing="false" onAction="#generarResumenProductos" 
-                                    styleClass="success" text="Generar Resumen" prefWidth="120.0" />
+                            <Button fx:id="btnGenerarResumen" layoutX="414.0" layoutY="78.0" mnemonicParsing="false" onAction="#generarResumenProductos" prefHeight="42.0" prefWidth="194.0" styleClass="success" text="Generar Resumen" />
                             
-                            <Label fx:id="lblTotalIngresos" layoutX="530.0" layoutY="90.0" 
-                                   styleClass="title-text" text="Ingresos Totales: $0.00">
+                            <Label fx:id="lblTotalIngresos" layoutX="684.0" layoutY="90.0" styleClass="title-text" text="Ingresos Totales: $0.00">
                                 <font>
                                     <Font name="Segoe UI Bold" size="16.0" />
                                 </font>
                             </Label>
                             
                             <!-- Tabla de Resumen -->
-                            <TableView fx:id="tablaResumenProductos" layoutX="20.0" layoutY="140.0" 
-                                       prefHeight="410.0" prefWidth="820.0" styleClass="table-container">
+                            <TableView fx:id="tablaResumenProductos" layoutX="20.0" layoutY="140.0" prefHeight="410.0" prefWidth="820.0" styleClass="table-container">
                                 <columns>
                                     <TableColumn fx:id="colNombreProducto" prefWidth="250.0" text="Producto" />
                                     <TableColumn fx:id="colCategoria" prefWidth="150.0" text="Categoría" />
