@@ -9,7 +9,7 @@ import org.panaderia.DAO.ClienteDAO;
 
 import java.io.IOException;
 
-public class ClienteController {
+public class ClienteController extends MenuController{
 
     @FXML private TableView<Cliente> tablaClientes;
 
@@ -23,7 +23,8 @@ public class ClienteController {
     @FXML private TextField txtId, txtNombre, txtTelefono, txtCorreo, txtPreferencias;
 
     private final ClienteDAO dao = new ClienteDAO();
-    private final String RUTA = "Clientes.csv";
+    private final String CLIENTES_FILE =
+            System.getProperty("user.dir") + "/data/clientes.csv";
 
     @FXML
     public void initialize() {
@@ -39,9 +40,9 @@ public class ClienteController {
 
     private void cargarTabla() {
         try {
-            tablaClientes.setItems(FXCollections.observableArrayList(dao.leer(RUTA)));
+            tablaClientes.setItems(FXCollections.observableArrayList(dao.leer(CLIENTES_FILE)));
         } catch (IOException e) {
-            mostrarAlerta("Error al cargar clientes", Alert.AlertType.ERROR);
+            setAlert(Alert.AlertType.ERROR, "Error al cargar clientes. ");
         }
     }
 
@@ -49,7 +50,7 @@ public class ClienteController {
     public void agregarCliente() {
 
         if (txtNombre.getText().isEmpty()) {
-            mostrarAlerta("El nombre es obligatorio", Alert.AlertType.WARNING);
+            setAlert(Alert.AlertType.ERROR, "El nombre no puede ser vacio. ");
             return;
         }
 
@@ -63,16 +64,16 @@ public class ClienteController {
         );
 
         try {
-            dao.agregar(RUTA, nuevo);
+            dao.agregar(CLIENTES_FILE, nuevo);
             cargarTabla();
             limpiarCampos();
+            setAlert(Alert.AlertType.INFORMATION, "Cliente agregado correctamente. ");
 
-            mostrarAlerta("Cliente agregado correctamente", Alert.AlertType.INFORMATION);
 
         } catch (IllegalArgumentException e) {
-            mostrarAlerta(e.getMessage(), Alert.AlertType.ERROR);
+            setAlert(Alert.AlertType.ERROR, "Uno de los campos posee información no válida. ");
         } catch (IOException e) {
-            mostrarAlerta("Error al guardar cliente", Alert.AlertType.ERROR);
+            setAlert(Alert.AlertType.ERROR, "Error al agregar cliente. ");
         }
     }
 
@@ -82,16 +83,17 @@ public class ClienteController {
         Cliente seleccionado = tablaClientes.getSelectionModel().getSelectedItem();
 
         if (seleccionado == null) {
-            mostrarAlerta("Selecciona un cliente", Alert.AlertType.WARNING);
+            setAlert(Alert.AlertType.WARNING, "Debes seleccionar un cliente. ");
             return;
         }
 
         try {
-            dao.eliminar(RUTA, seleccionado.getId());
+            dao.eliminar(CLIENTES_FILE, seleccionado.getId());
             cargarTabla();
+            setAlert(Alert.AlertType.INFORMATION, "Cliente eliminado correctamente. ");
 
         } catch (IOException e) {
-            mostrarAlerta("Error al eliminar", Alert.AlertType.ERROR);
+            setAlert(Alert.AlertType.ERROR, "Error al eliminar cliente.");
         }
     }
 
@@ -108,18 +110,8 @@ public class ClienteController {
         }
     }
 
-    @FXML
-    public void limpiarCampos() {
-        txtId.clear();
-        txtNombre.clear();
-        txtTelefono.clear();
-        txtCorreo.clear();
-        txtPreferencias.clear();
+    public void limpiarCampos (){
+        limpiarCeldas(txtId,txtNombre,txtTelefono,txtCorreo,txtPreferencias);
     }
 
-    private void mostrarAlerta(String mensaje, Alert.AlertType tipo) {
-        Alert alert = new Alert(tipo);
-        alert.setContentText(mensaje);
-        alert.showAndWait();
-    }
 }

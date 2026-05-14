@@ -15,32 +15,23 @@ import java.util.ResourceBundle;
 
 public class ComprobanteController extends MenuController implements Initializable {
     
-    @FXML
-    private Label lblIdVenta;
+    @FXML private Label lblIdVenta;
     
-    @FXML
-    private Label lblFecha;
+    @FXML private Label lblFecha;
     
-    @FXML
-    private Label lblCliente;
+    @FXML private Label lblCliente;
     
-    @FXML
-    private Label lblEmpleado;
+    @FXML private Label lblEmpleado;
     
-    @FXML
-    private Label lblMetodoPago;
+    @FXML private Label lblMetodoPago;
     
-    @FXML
-    private Label lblSubtotal;
+    @FXML private Label lblSubtotal;
     
-    @FXML
-    private Label lblDescuento;
+    @FXML private Label lblDescuento;
     
-    @FXML
-    private Label lblTotal;
+    @FXML private Label lblTotal;
     
-    @FXML
-    private VBox contenedorProductos;
+    @FXML private VBox contenedorProductos;
     
     private Venta ventaActual;
     

@@ -39,7 +39,8 @@ public class VentaDAO implements CRUD<Venta, String> {
      */
     private static final String VENTAS_FILE =
             System.getProperty("user.dir") + "/data/ventas.csv";
-    private static final String PRODUCTOS_FILE = "Productos.csv";
+    private static final String PRODUCTOS_FILE =
+            System.getProperty("user.dir") + "/data/productos.csv";
     private final ProductDAO productoDAO;
 
     // ── Constructores ─────────────────────────────────────────────────────────

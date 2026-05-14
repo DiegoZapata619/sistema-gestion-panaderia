@@ -94,7 +94,7 @@ public class PromocionDAO implements CRUD<Promocion, String> {
 
     /**
      * getTipo().name() garantiza que el String escrito al CSV
-     * siempre coincida con los nombres del enum, sin riesgo de typos.
+     * siempre coincida con los nombres del enum
      */
     private String serializar(Promocion p) {
         return p.getId()       + ";" +

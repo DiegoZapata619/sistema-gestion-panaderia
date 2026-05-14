@@ -3,11 +3,13 @@ package org.panaderia.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.panaderia.model.Sesion;
 
 public class EmployeeController extends MenuController{
     
     @FXML
-    private TextField txtFieldDummy; // Campo dummy para obtener el stage
+    /// TextFiel para obtener el stage actual
+    private TextField txtField;
     
     @FXML
     public void abrirGenerarVenta() {
@@ -26,12 +28,13 @@ public class EmployeeController extends MenuController{
     
     @FXML
     public void cerrarSesion() {
-        openNewStage(LOGIN_VIEW, titulosFxml.get(LOGIN_VIEW), getCurrentStage(), null);
+        openNewStage(LOGIN_VIEW, titulosFxml.get(LOGIN_VIEW), null, null);
+        Sesion.cerrar();
     }
     
     private Stage getCurrentStage() {
-        if (txtFieldDummy != null) {
-            return (Stage) txtFieldDummy.getScene().getWindow();
+        if (txtField != null) {
+            return (Stage) txtField.getScene().getWindow();
         }
         return null;
     }

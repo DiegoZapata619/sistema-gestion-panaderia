@@ -7,7 +7,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="500.0" styleClass="form-container" stylesheets="@../styles.css" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.panaderia.controllers.ComprobanteController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+            minHeight="-Infinity" minWidth="-Infinity"
+            prefHeight="600.0" prefWidth="500.0"
+            styleClass="form-container" stylesheets="@../styles.css"
+            xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.panaderia.controllers.ComprobanteController">
    <children>
       <VBox layoutX="20.0" layoutY="20.0" prefHeight="560.0" prefWidth="460.0" spacing="15.0">
          <children>
@@ -57,21 +62,21 @@
                   <AnchorPane prefHeight="25.0" prefWidth="460.0">
                      <children>
                         <Label layoutX="0.0" layoutY="0.0" styleClass="form-label" text="Subtotal:" />
-                        <Label fx:id="lblSubtotal" layoutX="350.0" layoutY="0.0" styleClass="form-value" text="100.00" />
+                        <Label fx:id="lblSubtotal" layoutX="350.0" layoutY="0.0" styleClass="form-value" text="\$100.00" />
                      </children>
                   </AnchorPane>
                   
                   <AnchorPane prefHeight="25.0" prefWidth="460.0">
                      <children>
                         <Label layoutX="0.0" layoutY="0.0" styleClass="form-label" text="Descuento:" />
-                        <Label fx:id="lblDescuento" layoutX="350.0" layoutY="0.0" styleClass="form-value" text="0.00" />
+                        <Label fx:id="lblDescuento" layoutX="350.0" layoutY="0.0" styleClass="form-value" text="\$0.00" />
                      </children>
                   </AnchorPane>
                   
                   <AnchorPane prefHeight="25.0" prefWidth="460.0">
                      <children>
                         <Label layoutX="0.0" layoutY="0.0" styleClass="form-label" text="TOTAL:" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
-                        <Label fx:id="lblTotal" layoutX="350.0" layoutY="0.0" styleClass="form-value" text="100.00" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
+                        <Label fx:id="lblTotal" layoutX="350.0" layoutY="0.0" styleClass="form-value" text="\$100.00" style="-fx-font-weight: bold; -fx-font-size: 16px;" />
                      </children>
                   </AnchorPane>
                </children>

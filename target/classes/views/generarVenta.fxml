@@ -6,7 +6,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TextFormatter?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -24,31 +23,31 @@
             <!-- Selección de Cliente -->
             <AnchorPane prefHeight="60.0" prefWidth="860.0">
                <children>
-                  <Label layoutX="20.0" layoutY="5.0" styleClass="form-label" text="Cliente:" />
-                  <ComboBox fx:id="comboClientes" layoutX="80.0" layoutY="20.0" prefHeight="30.0" prefWidth="200.0" styleClass="combo-box" />
+                  <Label layoutX="65.0" layoutY="19.0" styleClass="form-label" text="Cliente:" />
+                  <ComboBox fx:id="comboClientes" layoutX="136.0" layoutY="5.0" prefHeight="30.0" prefWidth="200.0" styleClass="combo-box" />
                </children>
             </AnchorPane>
             
             <!-- Selección de Producto -->
-            <AnchorPane prefHeight="60.0" prefWidth="860.0">
+            <AnchorPane prefHeight="74.0" prefWidth="860.0">
                <children>
-                  <Label layoutX="20.0" layoutY="5.0" styleClass="form-label" text="Producto:" />
-                  <ComboBox fx:id="comboProductos" layoutX="80.0" layoutY="20.0" prefHeight="30.0" prefWidth="250.0" styleClass="combo-box" />
-                  <Label layoutX="350.0" layoutY="5.0" styleClass="form-label" text="Cantidad:" />
-                  <TextField fx:id="txtCantidad" layoutX="410.0" layoutY="20.0" prefHeight="30.0" prefWidth="80.0" styleClass="text-field" text="1" />
-                  <Button fx:id="btnAgregar" layoutX="510.0" layoutY="20.0" mnemonicParsing="false" onAction="#agregarProducto" prefHeight="30.0" prefWidth="100.0" styleClass="success" text="Agregar" />
+                  <Label layoutX="35.0" layoutY="15.0" styleClass="form-label" text="Producto:" />
+                  <ComboBox fx:id="comboProductos" layoutX="114.0" layoutY="5.0" prefHeight="30.0" prefWidth="250.0" styleClass="combo-box" />
+                  <Label layoutX="400.0" layoutY="15.0" styleClass="form-label" text="Cantidad:" />
+                  <TextField fx:id="txtCantidad" layoutX="498.0" layoutY="2.0" prefHeight="30.0" prefWidth="80.0" styleClass="text-field" text="1" />
+                  <Button fx:id="btnAgregar" layoutX="685.0" layoutY="3.0" mnemonicParsing="false" onAction="#agregarProducto" prefHeight="30.0" prefWidth="100.0" styleClass="success" text="Agregar" />
                </children>
             </AnchorPane>
             
             <!-- Carrito de Compras -->
             <TableView fx:id="tablaCarrito" prefHeight="300.0" prefWidth="860.0" styleClass="table-container">
               <columns>
-                <TableColumn fx:id="colIdProducto" prefWidth="80.0" text="ID" />
-                <TableColumn fx:id="colNombreProducto" prefWidth="200.0" text="Producto" />
-                <TableColumn fx:id="colPrecioUnitario" prefWidth="100.0" text="Precio U." />
-                <TableColumn fx:id="colCantidad" prefWidth="80.0" text="Cantidad" />
-                <TableColumn fx:id="colSubtotal" prefWidth="100.0" text="Subtotal" />
-                <TableColumn fx:id="colAcciones" prefWidth="100.0" text="Acciones" />
+                <TableColumn fx:id="colIdProducto" prefWidth="88.79998779296875" text="ID" />
+                <TableColumn fx:id="colNombreProducto" prefWidth="172.800048828125" text="Producto" />
+                <TableColumn fx:id="colPrecioUnitario" prefWidth="135.20001220703125" text="Precio Unidad" />
+                <TableColumn fx:id="colCantidad" prefWidth="109.5999755859375" text="Cantidad" />
+                <TableColumn fx:id="colSubtotal" prefWidth="155.20001220703125" text="Subtotal" />
+                <TableColumn fx:id="colAcciones" prefWidth="162.4000244140625" text="Acciones" />
               </columns>
             </TableView>
             
@@ -81,16 +80,11 @@
                      <children>
                         <AnchorPane prefHeight="25.0" prefWidth="300.0">
                            <children>
-                              <Label layoutX="0.0" layoutY="0.0" styleClass="form-label" text="Método de Pago:" />
-                              <ComboBox fx:id="comboMetodoPago" layoutX="120.0" layoutY="0.0" prefHeight="25.0" prefWidth="150.0" styleClass="combo-box" />
+                              <Label layoutY="5.0" styleClass="form-label" text="Método de Pago:" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane prefHeight="25.0" prefWidth="300.0">
-                           <children>
-                              <Label layoutX="0.0" layoutY="0.0" styleClass="form-label" text="Descuento:" />
-                              <ComboBox fx:id="comboDescuento" layoutX="120.0" layoutY="0.0" prefHeight="25.0" prefWidth="150.0" styleClass="combo-box" />
-                           </children>
-                        </AnchorPane>
+                        <ComboBox fx:id="comboMetodoPago" prefHeight="25.0" prefWidth="150.0" styleClass="combo-box" />
+                        <AnchorPane prefHeight="25.0" prefWidth="300.0" />
                      </children>
                   </VBox>
                </children>
@@ -99,9 +93,9 @@
             <!-- Botones de Acción -->
             <AnchorPane prefHeight="60.0" prefWidth="860.0">
                <children>
-                  <Button fx:id="btnConfirmar" layoutX="550.0" layoutY="15.0" mnemonicParsing="false" onAction="#confirmarVenta" prefHeight="30.0" prefWidth="120.0" styleClass="success large" text="Confirmar Venta" />
-                  <Button fx:id="btnCancelar" layoutX="690.0" layoutY="15.0" mnemonicParsing="false" onAction="#cancelarVenta" prefHeight="30.0" prefWidth="120.0" styleClass="danger large" text="Cancelar" />
-                  <Button fx:id="btnVaciar" layoutX="400.0" layoutY="15.0" mnemonicParsing="false" onAction="#vaciarCarrito" prefHeight="30.0" prefWidth="120.0" styleClass="warning" text="Vaciar Carrito" />
+                  <Button fx:id="btnConfirmar" layoutX="506.0" layoutY="7.0" mnemonicParsing="false" onAction="#confirmarVenta" prefHeight="42.0" prefWidth="150.0" styleClass="success large" text="Confirmar Venta" />
+                  <Button fx:id="btnCancelar" layoutX="686.0" layoutY="3.0" mnemonicParsing="false" onAction="#cancelarVenta" prefHeight="42.0" prefWidth="133.0" styleClass="danger large" text="Cancelar" />
+                  <Button fx:id="btnVaciar" layoutX="328.0" layoutY="7.0" mnemonicParsing="false" onAction="#vaciarCarrito" prefHeight="42.0" prefWidth="160.0" styleClass="warning" text="Vaciar Carrito" />
                </children>
             </AnchorPane>
          </children>

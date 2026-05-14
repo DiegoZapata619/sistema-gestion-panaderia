@@ -1,4 +1,5 @@
 id;nombre;activa;tipo;parametro1;parametro2
-PROM001;Descuento 10% General;true;PORCENTAJE;10;0
-PROM002;Descuento $50 en compras mayores a $200;true;FIJO;200;50
-PROM003;2x1 en Panes;true;BUNDLE_X_Y;PAN;2
+PROMO-001;Descuento Pan Dulce;true;CATEGORIA;Pan Dulce;0.10
+PROMO-002;Descuento volumen;true;MONTO;100.00;0.05
+PROMO-003;Cliente frecuente;true;CLIENTE;C001;0.15
+PROMO-004;Concha del día;true;PRODUCTO;P001;0.20

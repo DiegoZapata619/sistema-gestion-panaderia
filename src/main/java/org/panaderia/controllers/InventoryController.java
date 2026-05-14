@@ -32,7 +32,11 @@ public class InventoryController extends MenuController {
     @FXML private TextField txtStockMinimo;
     @FXML private TextField txtDescripcion;
 
-    private static final String RUTA= "Productos.csv";
+    /// Anteriormente se tenían errores. Se usan rutas absolutas para acceder al .csv
+    private static final String PRODUCTOS_FILE =
+            System.getProperty("user.dir") + "/data/productos.csv";
+
+
     private final ProductDAO productDAO= new ProductDAO();
 
 
@@ -59,7 +63,7 @@ public class InventoryController extends MenuController {
     private void cargarTabla (){
         try {
             tablaProductos.setItems(FXCollections.
-                    observableArrayList(productDAO.leer(RUTA)));
+                    observableArrayList(productDAO.leer(PRODUCTOS_FILE)));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -87,7 +91,7 @@ public class InventoryController extends MenuController {
                         Integer.parseInt(txtStockMinimo.getText()),
                         txtDescripcion.getText());
 
-                productDAO.agregar(RUTA,nuevo);
+                productDAO.agregar(PRODUCTOS_FILE,nuevo);
                 cargarTabla();
                 limpiarCampos();
                setAlert(Alert.AlertType.INFORMATION, "Producto agregado correctamente");
@@ -110,13 +114,9 @@ public class InventoryController extends MenuController {
             return;
         }
 
-        if (Integer.parseInt(txtStock.getText())<=Integer.parseInt(txtStockMinimo.getText())) {
-            setAlert(Alert.AlertType.ERROR, "El stock mínimo debe ser menor al stock");
-        }
-
         try {
 
-            boolean eliminado= productDAO.eliminar(RUTA,seleccionado.getId());
+            boolean eliminado= productDAO.eliminar(PRODUCTOS_FILE,seleccionado.getId());
             if (eliminado){
                 cargarTabla();
                 limpiarCeldas();
@@ -146,8 +146,10 @@ public class InventoryController extends MenuController {
                     txtDescripcion.getText()
             );
 
-            productDAO.actualizar(RUTA, actualizado);
+            productDAO.actualizar(PRODUCTOS_FILE, actualizado);
             cargarTabla();
+            limpiarCampos();
+            setAlert(Alert.AlertType.INFORMATION, "Producto actualizado correctamente.");
 
         } catch (Exception e) {
             setAlert(Alert.AlertType.ERROR, "Error al actualizar");

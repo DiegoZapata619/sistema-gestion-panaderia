@@ -8,7 +8,6 @@ import org.panaderia.DAO.PromocionDAO;
 import org.panaderia.model.Descuentos.DescuentoFactory;
 import org.panaderia.model.Descuentos.IEstrategiaDescuento;
 import org.panaderia.model.Descuentos.TipoDescuento;
-import org.panaderia.model.Producto;
 import org.panaderia.model.Promocion;
 
 import java.io.IOException;
@@ -58,7 +57,8 @@ public class PromocionController extends MenuController {
 
     private final ObservableList<Promocion> promociones = FXCollections.observableArrayList();
 
-    private static final String RUTA_PROMOCIONES = "Promociones.csv";
+    private static final String PROMOCIONES_FILE =
+            System.getProperty("user.dir") + "/data/promociones.csv";
 
     @FXML
     public void initialize() {
@@ -87,7 +87,7 @@ public class PromocionController extends MenuController {
 
     private void cargarPromociones() {
         try {
-            List<Promocion> lista = promocionDAO.leer(RUTA_PROMOCIONES);
+            List<Promocion> lista = promocionDAO.leer(PROMOCIONES_FILE);
             promociones.setAll(lista);
         } catch (IOException e) {
             System.out.println("Error al cargar promociones: " + e.getMessage());
@@ -118,7 +118,7 @@ public class PromocionController extends MenuController {
                     txtNombre.getText(),estrategia
                     );
             nuevo.setActivo(obtenerEstadoSeleccionado());
-            promocionDAO.agregar(RUTA_PROMOCIONES,nuevo);
+            promocionDAO.agregar(PROMOCIONES_FILE,nuevo);
             cargarPromociones();
             limpiarCampos();
             setAlert(Alert.AlertType.INFORMATION, "Promocion agregada correctamente");
@@ -141,7 +141,7 @@ public class PromocionController extends MenuController {
 
         try {
             boolean eliminada = promocionDAO.eliminar(
-                    RUTA_PROMOCIONES,
+                    PROMOCIONES_FILE,
                     seleccionado.getId()
             );
             if (eliminada) {
@@ -168,7 +168,7 @@ public class PromocionController extends MenuController {
                     estrategia);
             actualizado.setActivo(obtenerEstadoSeleccionado());
             boolean actualizadoCorrectamente = promocionDAO.actualizar(
-                    RUTA_PROMOCIONES,
+                    PROMOCIONES_FILE,
                     actualizado
             );
 

@@ -1,16 +1,33 @@
 package org.panaderia.controllers;
 
 import javafx.fxml.FXML;
+
+import javafx.fxml.FXMLLoader;
+
+import javafx.scene.Parent;
+
+import javafx.scene.Scene;
+
 import javafx.scene.control.Label;
+
 import javafx.scene.control.PasswordField;
+
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
+
 import javafx.scene.input.KeyCode;
+
+import javafx.scene.input.KeyEvent;
+
 import javafx.stage.Stage;
-import org.panaderia.model.Rol;
-import org.panaderia.model.Usuario;
+
 import org.panaderia.Servicios.Autenticador;
-import org.panaderia.utils.SesionActual;
+
+import org.panaderia.model.Rol;
+
+import org.panaderia.model.Sesion;
+import org.panaderia.model.Usuario;
+
+
 
 import java.io.IOException;
 
@@ -18,35 +35,34 @@ import java.io.IOException;
     Credenciales para acceder al sistema, están en formato usuario : contraseña
         admin : testing1
         user : testing2
+
     */
 public class LoginController extends MenuController{
     @FXML
     private TextField TxtUsuario;
     @FXML
     private PasswordField TxtPassword;
-
     @FXML
     private Label lblMensaje;
-
     private final Autenticador autenticador= new Autenticador();
 
     @FXML
+
     private void inicioSesion() {
         //uso de trim() para remover espacios en blanco que afecten al getText()
         String nombre= TxtUsuario.getText().trim();
         String password= TxtPassword.getText().trim();
 
         try {
+
             Usuario usuario= autenticador.Autenticar(nombre,password);
             Stage currentStage= (Stage) TxtUsuario.getScene().getWindow();
             if (usuario==null){
                 lblMensaje.setText("Usuario/Contraseña incorrectos");
                 return;
+
             }
-            
-            // Establecer el usuario en la sesión actual
-            SesionActual.setUsuarioActual(usuario);
-            
+            Sesion.iniciar(usuario);
             //Dependiendo del rol se carga una vista distinta
             if (usuario.getRol()== Rol.ADMINISTRADOR){
                 openNewStage(ADMIN_VIEW,titulosFxml.get(ADMIN_VIEW),currentStage,LOGIN_VIEW);
@@ -55,12 +71,12 @@ public class LoginController extends MenuController{
             } else if (usuario.getRol()==Rol.EMPLEADO) {
                 openNewStage(EMPLOYEE_VIEW,titulosFxml.get(EMPLOYEE_VIEW),currentStage,LOGIN_VIEW);
                 closeCurrentStage(TxtUsuario);
+
             }
 
         } catch (IOException e){
             lblMensaje.setText("Error al leer usuario");
             e.printStackTrace();
-
         }
     }
 
@@ -70,4 +86,5 @@ public class LoginController extends MenuController{
             inicioSesion();
         }
     }
+
 }

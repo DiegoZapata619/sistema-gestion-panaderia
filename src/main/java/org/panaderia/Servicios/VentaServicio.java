@@ -97,10 +97,8 @@ public class VentaServicio {
             if (nuevoStock < 0) {
                 throw new RuntimeException("Stock insuficiente para el producto: " + producto.getNombre());
             }
-            
             producto.setStock(nuevoStock);
-            // Actualizar producto en el DAO
-            // productDAO.actualizar("data/productos.csv", producto);
+            productDAO.actualizar(System.getProperty("user.dir") + "/data/productos.csv", producto);
         }
     }
 

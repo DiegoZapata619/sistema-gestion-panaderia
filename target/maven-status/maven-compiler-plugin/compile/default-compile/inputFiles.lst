@@ -1,9 +1,7 @@
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\DAO\ProductDAO.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Administrador.java
-C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\test\TestSimple.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Descuentos\DescuentoMonto.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\DAO\PromocionDAO.java
-C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\utils\SesionActual.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\EmployeeController.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Cliente.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Descuentos\IEstrategiaDescuento.java
@@ -16,8 +14,8 @@ C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderi
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Descuentos\TipoDescuento.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\InventoryController.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\DAO\UsuarioDAO.java
+C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Sesion.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Usuario.java
-C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\test\TestGenerarVenta.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\ReportesController.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\Main.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Descuentos\ValidadorCampos.java
@@ -34,12 +32,11 @@ C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderi
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\MetodoPago.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\UserController.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\Servicios\Encriptador.java
-C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\test\TestVentaServicio.java
+C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\Servicios\ItemCarrito.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Venta.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\model\Descuentos\DescuentoProducto.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\AdminController.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\PromocionController.java
-C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\test\TestVentasDAO.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\ConsultaClientesController.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\controllers\ConsultaProductosController.java
 C:\Users\diego\IdeaProjects\sistema-gestion-panaderia\src\main\java\org\panaderia\Servicios\ClienteServicio.java
